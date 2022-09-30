@@ -2,7 +2,6 @@
 .head-professor{
     display: flex;
     border-radius: 10px;
-    margin-top: 2rem;
     overflow: hidden;
     width: 100%;
 }
@@ -50,6 +49,7 @@
 .division-line{
     display: flex;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     padding: 0, 1rem;
     flex-basis: width;
     font-size: 2rem;
@@ -58,14 +58,18 @@
 .division-line::before{
     content: "";
     margin-top: 1.5rem;
+    margin-right: 1rem;
     flex-grow: 1;
     height: 1px;
-    background: rgba(0,0,0,0.35);
+    background: linear-gradient(to right, #0000, rgba(0,0,0,0.35));
+    //background: rgba(0,0,0,0.35);
 }
 .division-line::after{
     content: "";
     margin-top: 1.5rem;
+    margin-left: 1rem;
     flex-grow: 1;
     height: 1px;
-    background: rgba(0,0,0,0.35);;
+    background: linear-gradient(to left, #0000, rgba(0,0,0,0.35));
+    //background: rgba(0,0,0,0.35);;
 }
