@@ -73,3 +73,16 @@
     background: linear-gradient(to left, #0000, rgba(0,0,0,0.35));
     //background: rgba(0,0,0,0.35);;
 }
+.students{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.student{
+    display:inline;
+    text-align: center;
+}
+.student-field, .student-email{
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+}
