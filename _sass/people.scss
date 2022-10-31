@@ -25,12 +25,13 @@
 .professor-left > div > span{
     display: block;
     text-align: center;
-    font-size: 10px;
+    font-size: 12px;
 }
 .professor-right{
     padding-left: 1rem;
     border-left: 1px solid silver;
     overflow: auto;
+    font-size: 12px;
 }
 #professor-name{
     display: block;
@@ -40,11 +41,15 @@
     padding: 1rem;
     font-size: 10px;
 }
+.professor-link{
+    display: inline-block;
+}
+
 .career > b{
-    font-size: 14px;
+    font-size: 16px;
 }
 .career{
-    font-size: 10px;
+    font-size: 14px;
 }
 .division-line{
     display: flex;
@@ -92,7 +97,7 @@
     margin-bottom: 0.8rem;
 }
 .student-email{
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     margin: 0.5rem 0;
 }
 .student-link{
