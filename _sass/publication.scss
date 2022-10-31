@@ -1,0 +1,21 @@
+.publications-per-year{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 3rem;
+}
+.year-mark{
+    vertical-align: top;
+    display: inline-block;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+.publications{
+    display: inline-block;
+    border-left: 3px solid;
+    border-image: linear-gradient(to top, #0000, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+    border-image-slice: 1;
+
+}
+.publication{
+    padding: 1rem;
+}
