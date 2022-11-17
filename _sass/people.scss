@@ -31,11 +31,11 @@
     padding-left: 1rem;
     border-left: 1px solid silver;
     overflow: auto;
-    font-size: 12px;
+    font-size: 1rem;
 }
 .professor-name{
-    display: block;
-    text-align: center;
+    font-weight:bold;
+    font-size: 1.3rem;
 }
 #professor-link{
     padding: 1rem;
@@ -87,6 +87,9 @@
     text-align: center;
     margin-bottom: 1rem;
     width:250px;
+}
+.student-name{
+    font-size:1.3rem;
 }
 .student-top{
     margin-bottom: 0.5rem;
