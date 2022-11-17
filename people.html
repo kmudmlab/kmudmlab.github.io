@@ -56,7 +56,7 @@ background: '/img/bg-about.jpg'
         <div class="student">
             <div class="student-top">
             {% if student.image != null and student.image != "" %}
-                <img src= {{ "/img/posts/" | append: student.image }}>
+                <img src={{ student.image }}>
             {% else %}
                 <img src="/img/posts/unknown.jpg">
             {% endif %}
