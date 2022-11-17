@@ -52,18 +52,24 @@ background: '/img/bg-about.jpg'
     <div class="division-line">Graduate Student</div>
 
     <div class="students">
+    {% for student in site.data.graduate_student %}
         <div class="student">
             <div class="student-top">
+            {% if student.image != null and student.image != "" %}
+                <img src= {{ "/img/posts/" | append: student.image }}>
+            {% else %}
                 <img src="/img/posts/unknown.jpg">
+            {% endif %}
             </div>
+
             <div class="student-down">
-                <b class="student-name">unknown</b>
-                <p class="student-field">AI Engineer</p>
+                <b class="student-name">{{ student.name }}</b>
+                <p class="student-field">{{ student.interest }}</p>
                 <hr class="student-division">
                 <div class="student-info">
-                    <p class="student-email">Email: unknown@kookmin.ac.kr</p>
+                    <p class="student-email">Email: {{ student.email }}</p>
                     <div class="student-link">
-                        <a><i class="fab fa-github"></i></a>
+                        <a href="{{ student.github }}"><i class="fab fa-github"></i></a>
                         <a><i class="fab fa-instagram-square"></i></a>
                         <a><i class="fab fa-facebook"></i></a>
                     </div>
@@ -71,61 +77,39 @@ background: '/img/bg-about.jpg'
                 
             </div>
         </div>
-        <div class="student">
-            <div class="student-top">
-                <img src="/img/posts/unknown.jpg">
-            </div>
-            <div class="student-down">
-                <b class="student-name">unknown</b>
-                <p class="student-field">AI Engineer</p>
-                <hr class="student-division">
-                <div class="student-info">
-                    <p class="student-email">Email: unknown@kookmin.ac.kr</p>
-                    <div class="student-link">
-                        <a></a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="student">
-            <div class="student-top">
-                <img src="/img/posts/unknown.jpg">
-            </div>
-            <div class="student-down">
-                <b class="student-name">unknown</b>
-                <p class="student-field">AI Engineer</p>
-                <hr class="student-division">
-                <div class="student-info">
-                    <p class="student-email">Email: unknown@kookmin.ac.kr</p>
-                    <div class="student-link">
-                        <a></a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="student">
-            <div class="student-top">
-                <img src="/img/posts/unknown.jpg">
-            </div>
-            <div class="student-down">
-                <b class="student-name">unknown</b>
-                <p class="student-field">AI Engineer</p>
-                <hr class="student-division">
-                <div class="student-info">
-                    <p class="student-email">Email: unknown@kookmin.ac.kr</p>
-                    <div class="student-link">
-                        <a></a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
+    {% endfor %}
     </div>
 
     <div class="division-line">Undergraduate Student</div>
-
     
+    <div class="students">
+        {% for student in site.data.undergraduate_student %}
+            <div class="student">
+                <div class="student-top">
+                {% if student.image != null and student.image != "" %}
+                    <img src= {{ "/img/posts/" | append: student.image }}>
+                {% else %}
+                    <img src="/img/posts/unknown.jpg">
+                {% endif %}
+                </div>
+    
+                <div class="student-down">
+                    <b class="student-name">{{ student.name }}</b>
+                    <p class="student-field">{{ student.interest }}</p>
+                    <hr class="student-division">
+                    <div class="student-info">
+                        <p class="student-email">Email: {{ student.email }}</p>
+                        <div class="student-link">
+                            <a href="{{ student.github }}"><i class="fab fa-github"></i></a>
+                            <a><i class="fab fa-instagram-square"></i></a>
+                            <a><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
 </article>
 <hr>
