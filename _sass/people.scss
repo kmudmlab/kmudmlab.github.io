@@ -33,14 +33,12 @@
     overflow: auto;
     font-size: 1rem;
 }
-
-#professor-name{
-    display: block;
-    text-align: center;
+.professor-name{
+    font-weight:bold;
+    font-size: 1.3rem;
 }
 #professor-link{
     padding: 1rem;
-    font-size: 1rem;
 }
 .professor-link{
     display: inline-block;
@@ -88,6 +86,10 @@
     display:inline;
     text-align: center;
     margin-bottom: 1rem;
+    width:250px;
+}
+.student-name{
+    font-size:1.3rem;
 }
 .student-top{
     margin-bottom: 0.5rem;
@@ -101,12 +103,12 @@
     font-size: 1.4rem;
 }
 .student-field{
-    font-size: 0.8rem;
     margin-top: 0;
     margin-bottom: 0.8rem;
 }
 .student-email{
     font-size: 0.8rem;
+    font-size: 1rem;
     margin: 0.5rem 0;
 }
 .student-link{
@@ -118,4 +120,10 @@
     margin: 0 1rem;
     background-color: #fff;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.student-photo{
+    width:250px;
+    height:250px;
+    background-size:cover;
 }

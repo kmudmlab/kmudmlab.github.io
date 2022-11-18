@@ -6,62 +6,36 @@ background: '/img/bg-about.jpg'
 ---
 
 <article class="people">
-    <div class="division-line">Assistant Professor</div>
+    <div class="division-line">Principal Investigator</div>
     <div class="head-professor">
         <div class="professor-left">
             <img src="/img/posts/hmpark.jpg">
-            <div>
-                <b id="professor-name">Ha-Myung Park</b>
-                <span>Assistant Professor</span>
-                
-            </div>
         </div>
         <div class="professor-right">
+            <div class="professor-name">Ha-Myung Park</div>
+            <div class="professor-field">
+                Assistant Professor<br>
+                Collage of Computer Science<br>
+                Kookmin University
+            </div>
             <ul id="professor-link">
-                    
-                <li>Office: 미래관 403호</li>
+                <li>Office: Room 403, Future Hall (미래관)</li>
                 <li>Email: hmpark@kookmin.ac.kr</li>
                 <li>WWW: <a href="http://hmpark.me">http://hmpark.me</a></li>
             </ul>
-            Ha-Myung Park is an assistent professor in College of Computer Science at Kookmin University. He received Ph.D. in School of Computing at KAIST (advisors: U Kang and Sung-Hyon Myaeng), M.S. in Division of Web Science and Technology at KAIST (advisor: Chin-Wan Chung), and B.S. in Computer Science and Engineering at SungKyunKwan Univ. (SKKU).
-            <!--
-            <div class="career">
-                <b>Honours and Awards</b>
-                <ul>
-                    <li>Naver PhD Fellowship Award, (Dec. 2016)</li>
-                    <li>IEEE ICDM 2016 Student Travel Award, (Nov. 2016)</li>
-                    <li>HumanTech award (silver), Samsung (Feb. 2016)</li>
-                </ul>
-            </div>
-            <div class="career">
-                <b>Research Interest</b>
-                <ul>
-                    <li>Large scale graph mining</li>
-                    <li>Scalable machine learning and data mining</li>
-                </ul>
-            </div>
-            <div class="career">
-                <b>Projects</b>
-                <ul>
-                    <li>Distributed K-Nearest-Neighbor Graph Construction and Search for Scalable High-dimensional Data Analyses (2020 - Now)</li>
-                    <li>Efficient Triangle Enumeration on Heterogeneous Clusters (2019 - 2020)</li>
-                    <li>Exobrain, Development of Core Technology for Human-like Self-taught Learning based on a Symbolic Approach (2014 - 2019)</li>
-                    <li>Large Scale Matrix Computation for Personalized Recommendation (2013 - 2014)</li>
-                </ul>
-            </div>-->
         </div>
     </div>
 
-    <div class="division-line">Graduate Student</div>
+    <div class="division-line">Graduate Students</div>
 
     <div class="students">
     {% for student in site.data.graduate_student %}
         <div class="student">
             <div class="student-top">
             {% if student.image != null and student.image != "" %}
-                <img src = {{ "/img/posts/students/" | append: student.image }}>
-            {% else %} 
-                <img src="/img/posts/unknown.jpg">
+                <div class="student-photo" style="background-image:url({{ student.image }})"></div>
+            {% else %}
+                <div class="student-photo" style="background-image:url(/img/posts/unknown.jpg)"></div>
             {% endif %}
             </div>
 
@@ -89,7 +63,7 @@ background: '/img/bg-about.jpg'
     {% endfor %}
     </div>
 
-    <div class="division-line">Undergraduate Student</div>
+    <div class="division-line">Undergraduate Students</div>
     
     <div class="students">
         {% for student in site.data.undergraduate_student %}

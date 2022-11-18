@@ -1,14 +1,36 @@
 - name: SangHong Kim
   email: bconfiden2@naver.com
   github: https://github.com/bconfiden2
-  instagram: ~
-  facebook: ~
-  interest: KNN, Graph
-  image: ~
-- name: HyunSeok Park
+  interest: K-Nearest Neighbors, Graph Algorithms
+  image: https://avatars.githubusercontent.com/u/58922834?v=4
+- name: Hyunseok Park
   email: 20151741@kookmin.ac.kr
   github: https://github.com/gustjr7879
   instagram: https://www.instagram.com/hyunskki/
-  facebook: ~
-  interest: Graph Neural Network
-  image: parkhyunseok.png
+  interest: GNN, K-cores
+  image: /img/posts/hspark.png
+- name: Ismail Abdulhakin
+  email: iamismail@kookmin.ac.kr
+  github: ~
+  interest: Deep-learning Methods, Weather Analysis
+  image: /img/posts/ismail.jpeg
+- name: Changhun Han
+  email: noye@kookmin.ac.kr
+  github: https://github.com/codingnoye
+  interest: Large scale graph mining, K-Nearest Neighbors
+  image: https://avatars.githubusercontent.com/u/48244997?v=4
+- name: Minhyoung Kim
+  email: kyun2024@kookmin.ac.kr
+  github: ~
+  interest: Graph Compression, Graph Algorithms
+  image: ~
+- name: Suji Kim
+  email: suji2924@kookmin.ac.kr
+  github: ~
+  interest: K-Nearest Neighbors
+  image: ~
+- name: Youngjun Lee
+  email: younghe42286@gmail.com
+  github: ~
+  interest: ~
+  image: ~

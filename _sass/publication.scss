@@ -23,3 +23,11 @@
     color: orange;
     font-size: 1rem;
 }
+.publication-title{
+    font-size:2rem;
+    padding-bottom: 10px;
+    font-weight:bold;
+}
+.publication-title::before{
+    content:"> ";
+}
