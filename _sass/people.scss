@@ -14,8 +14,8 @@
 }
 .professor-left > img{
     display: block;
-    width: 15rem;
-    height: 15rem;
+    width: 17rem;
+    height: 17rem;
 }
 .professor-left > div{
     display: block;
@@ -94,12 +94,20 @@
 .student-top{
     margin-bottom: 0.5rem;
 }
+.student-top > img{
+    width: 12rem;
+    height: 12rem;
+    object-fit: cover;
+}
+.student-name{
+    font-size: 1.4rem;
+}
 .student-field{
-    font-size: 1rem;
     margin-top: 0;
     margin-bottom: 0.8rem;
 }
 .student-email{
+    font-size: 0.8rem;
     font-size: 1rem;
     margin: 0.5rem 0;
 }
