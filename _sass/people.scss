@@ -91,6 +91,11 @@
 .student-top{
     margin-bottom: 0.5rem;
 }
+.student-top > img{
+    width: 12rem;
+    height: 12rem;
+    object-fit: cover;
+}
 .student-field{
     font-size: 0.5rem;
     margin-top: 0;

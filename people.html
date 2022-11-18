@@ -56,8 +56,8 @@ background: '/img/bg-about.jpg'
         <div class="student">
             <div class="student-top">
             {% if student.image != null and student.image != "" %}
-                <img src= {{ "/img/posts/" | append: student.image }}>
-            {% else %}
+                <img src = {{ "/img/posts/students/" | append: student.image }}>
+            {% else %} 
                 <img src="/img/posts/unknown.jpg">
             {% endif %}
             </div>
@@ -69,9 +69,15 @@ background: '/img/bg-about.jpg'
                 <div class="student-info">
                     <p class="student-email">Email: {{ student.email }}</p>
                     <div class="student-link">
-                        <a href="{{ student.github }}"><i class="fab fa-github"></i></a>
-                        <a><i class="fab fa-instagram-square"></i></a>
-                        <a><i class="fab fa-facebook"></i></a>
+                        {% if student.github != null and student.github != "" %}
+                            <a target="_blank" href="{{ student.github }}"><i class="fab fa-github"></i></a>
+                            {% endif %}
+                            {% if student.instagram != null and student.instagram != "" %}
+                            <a target="_blank" href="{{ student.instagram }}"><i class="fab fa-instagram-square"></i></a>
+                            {% endif %}
+                            {% if student.facebook != null and student.facebook != "" %}
+                            <a target="_blank" href="{{ student.facebook }}"><i class="fab fa-facebook"></i></a>
+                            {% endif %}
                     </div>
                 </div>
                 
@@ -87,7 +93,7 @@ background: '/img/bg-about.jpg'
             <div class="student">
                 <div class="student-top">
                 {% if student.image != null and student.image != "" %}
-                    <img src= {{ "/img/posts/" | append: student.image }}>
+                    <img src= {{ "/img/posts/students/" | append: student.image }}>
                 {% else %}
                     <img src="/img/posts/unknown.jpg">
                 {% endif %}
@@ -100,9 +106,15 @@ background: '/img/bg-about.jpg'
                     <div class="student-info">
                         <p class="student-email">Email: {{ student.email }}</p>
                         <div class="student-link">
-                            <a href="{{ student.github }}"><i class="fab fa-github"></i></a>
-                            <a><i class="fab fa-instagram-square"></i></a>
-                            <a><i class="fab fa-facebook"></i></a>
+                            {% if student.github != null and student.github != "" %}
+                            <a target="_blank" href="{{ student.github }}"><i class="fab fa-github"></i></a>
+                            {% endif %}
+                            {% if student.instagram != null and student.instagram != "" %}
+                            <a target="_blank" href="{{ student.instagram }}"><i class="fab fa-instagram-square"></i></a>
+                            {% endif %}
+                            {% if student.facebook != null and student.facebook != "" %}
+                            <a target="_blank" href="{{ student.facebook }}"><i class="fab fa-facebook"></i></a>
+                            {% endif %}
                         </div>
                     </div>
                     

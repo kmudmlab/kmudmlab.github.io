@@ -1,10 +1,35 @@
 - name: Jaeo Cho
   email: cho5095@kookmin.ac.kr
   github: https://github.com/Grievle
+  instagram: ~
+  facebook: ~
   interest: Large scale graph mining, KNN
   image: ~
 - name: ChangHun Han
   email: codingnoye@kookmin.ac.kr
   github: https://github.com/codingnoye
+  instagram: ~
+  facebook: ~
   interest: Large scale graph mining, KNN
   image: ~
+- name: Doun Lee
+  email: ldoun8260@gmail.com
+  github: https://github.com/Ldoun
+  instagram: https://www.instagram.com/doun_8260
+  facebook: ~
+  interest: Deep Learning, Graph Neural Network
+  image: ~
+- name: YongUk Song
+  email: songyonguk@kookmin.ac.kr
+  github: https://github.com/songyonguk
+  instagram: ~
+  facebook: ~
+  interest: Graph Mining, Legal Tech
+  image: 
+- name: MinJun Song
+  email: minjun7410@kookmin.ac.kr
+  github: http://github.com/minjun7410
+  instagram: https://www.instagram.com/minjun8739/
+  facebook: ~
+  interest: KNN
+  image: songminjun.jpeg
