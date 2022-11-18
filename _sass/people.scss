@@ -14,8 +14,8 @@
 }
 .professor-left > img{
     display: block;
-    width: 15rem;
-    height: 15rem;
+    width: 17rem;
+    height: 17rem;
 }
 .professor-left > div{
     display: block;
@@ -31,15 +31,16 @@
     padding-left: 1rem;
     border-left: 1px solid silver;
     overflow: auto;
-    font-size: 12px;
+    font-size: 1rem;
 }
+
 #professor-name{
     display: block;
     text-align: center;
 }
 #professor-link{
     padding: 1rem;
-    font-size: 10px;
+    font-size: 1rem;
 }
 .professor-link{
     display: inline-block;
@@ -96,13 +97,16 @@
     height: 12rem;
     object-fit: cover;
 }
+.student-name{
+    font-size: 1.4rem;
+}
 .student-field{
-    font-size: 0.5rem;
+    font-size: 0.8rem;
     margin-top: 0;
     margin-bottom: 0.8rem;
 }
 .student-email{
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     margin: 0.5rem 0;
 }
 .student-link{
