@@ -1,0 +1,44 @@
+---
+layout: page
+title: Seminar
+description: 
+background: '/img/bg-post.jpg'
+---
+
+<article class="seminar container">
+
+    <h3>About</h3>
+    <div>
+        <p>We hold seminars on large-scale data processing, graph AI, distributed graph algorithms, and any others related to data mining.</p>
+        <p>The information on the seminar is as follows:</p>
+        <ul>
+            <li>Every Friday 4:00 pm - 5:00 pm</li>
+            <li>K-Lab(723), Futuer Hall, Kookmin University</li>
+            <li>Topic: On-going researches and data mining research papers (KDD, ICDM, ICDE, CIKM, etc.)</li>
+        </ul>
+    </div> 
+    
+    <br>
+    <h3>Schedule</h3>
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+            <th scope="col" style="text-align:center">Date</th>
+            <th scope="col" style="text-align:center">Presenter</th>
+            <th scope="col" style="text-align:center">Title</th>
+        </thead>
+        <tbody>
+            {% for item in site.data.seminar %}
+            <tr>
+                <td style="text-align:center">{{ item.date }}</td>
+                <td style="text-align:center">{{ item.presenter }}</td>
+                <td>{{ item.title }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+
+
+</article>
