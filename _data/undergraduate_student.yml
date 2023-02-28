@@ -1,43 +1,51 @@
 - name: Jaeo Cho
+  image: /img/posts/students/jaeo-cho.png  
+  interest: Large scale graph mining, K-Nearest Neighbors
   email: cho5095@kookmin.ac.kr
   github: https://github.com/Grievle
-  instagram: ~
-  facebook: ~
-  interest: Large scale graph mining, KNN
+  instagram: https://www.instagram.com/ding.cho._.jaeo
+
+- name: YooJin Kim
+  image: /img/posts/students/yoojin-kim.png
+  interest: Data Engineering, Recommendation System
+  email: yyjin12171@kookmin.ac.kr
+  github: https://github.com/Erica1217
+  instagram: https://www.instagram.com/yu._.jeans
+  
+- name: SoJung Lee
+  image: /img/posts/students/sojung-lee.png
+  interest: Recommender Systems, K-Nearest Neighbors
+  email: prikey7@kookmin.ac.kr
+  github: https://github.com/grapefruit224
+
+- name: JunKwan Kim
   image: ~
-- name: Yujin Kim
-  email: ~
-  github: ~
   interest: ~
-  image: ~
-- name: Sojung Lee
   email: ~
   github: ~
-  interest: ~
-  image: ~
-- name: Junkwan Kim
-  email: ~
-  github: ~
-  interest: ~ 
-  image: ~
+
 - name: Doun Lee
+  image: /img/posts/students/doun-lee.png
+  interest: Deep Learning, Graph Neural Network
   email: ldoun8260@gmail.com
   github: https://github.com/Ldoun
   instagram: https://www.instagram.com/doun_8260
-  facebook: ~
-  interest: Deep Learning, Graph Neural Network
-  image: ~
+
 - name: YongUk Song
+  image: /img/posts/students/yonguk-song.png
+  interest: Graph Mining, Legal Tech
   email: songyonguk@kookmin.ac.kr
   github: https://github.com/songyonguk
-  instagram: ~
-  facebook: ~
-  interest: Graph Mining, Legal Tech
-  image: 
+
 - name: MinJun Song
+  image: /img/posts/students/minjun-song.png
+  interest: K-Nearest Neighbors
   email: minjun7410@kookmin.ac.kr
   github: http://github.com/minjun7410
   instagram: https://www.instagram.com/minjun8739/
-  facebook: ~
-  interest: KNN
-  image: songminjun.jpeg
+  
+- name: HyeSung Kim
+  image: ~
+  interest: ~
+  email: ~
+  github: ~
