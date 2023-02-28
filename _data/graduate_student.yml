@@ -1,41 +1,48 @@
 - name: SangHong Kim
+  image: /img/posts/students/sanghong-kim.png
+  interest: K-Nearest Neighbors, Graph Algorithms
   email: bconfiden2@naver.com
   github: https://github.com/bconfiden2
-  interest: K-Nearest Neighbors, Graph Algorithms
-  image: https://avatars.githubusercontent.com/u/58922834?v=4
-- name: Hyunseok Park
+  
+- name: HyunSeok Park
+  image: /img/posts/students/hyunseok-park.png
+  interest: Graph Neural Networks, K-cores
   email: 20151741@kookmin.ac.kr
   github: https://github.com/gustjr7879
   instagram: https://www.instagram.com/hyunskki/
-  interest: GNN, K-cores
-  image: /img/posts/hspark.png
+
 - name: Ismail Abdulhakin
+  image: /img/posts/students/ismail-abdulhakin.png
+  interest: Deep-learning Methods, Weather Analysis
   email: iamismail@kookmin.ac.kr
   github: https://github.com/iamismaill
-  interest: Deep-learning Methods, Weather Analysis
-  image: /img/posts/ismail.jpeg
-- name: Changhun Han
+  
+- name: ChangHun Han
+  image: /img/posts/students/changhun-han.png
+  interest: Large scale graph mining, K-Nearest Neighbors
   email: codingnoye@kookmin.ac.kr
   github: https://github.com/codingnoye
-  interest: Large scale graph mining, K-Nearest Neighbors
-  image: https://avatars.githubusercontent.com/u/48244997?v=4
-- name: Minhyoung Kim
-  email: kyun2024@kookmin.ac.kr
-  github: ~
+  
+- name: MinHyoung Kim
+  image: /img/posts/students/minhyoung-kim.png
   interest: Graph Compression, Graph Algorithms
-  image: ~
-- name: Suji Kim
-  email: suji2924@kookmin.ac.kr
-  github: ~
+  email: kyun2024@kookmin.ac.kr
+  github: https://github.com/kyun2024
+  
+- name: SuJi Kim
+  image: /img/posts/students/suji-kim.png
   interest: K-Nearest Neighbors
-  image: ~
-- name: Youngjun Lee
+  email: suji2924@kookmin.ac.kr
+  github: https://github.com/suji2924
+  
+- name: YoungJun Lee
+  image: /img/posts/students/youngjun-lee.png
+  interest: Recommendation System
   email: younghe42286@gmail.com
-  github: ~
-  interest: ~
-  image: ~
-- name: Kang Jisoo
+  github: https://github.com/YJJonatanLee
+  
+- name: JiSoo Kang
+  image: /img/posts/students/jisoo-kang.png
+  interest: Deep Learning
   email: tn1078@kookmin.ac.kr
-  github: ~
-  interest: ~
-  image: ~
+  github: https://github.com/kjsoo-1010
