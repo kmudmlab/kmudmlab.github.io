@@ -69,42 +69,112 @@ background: '/img/bg-about.jpg'
     <div class="division-line">Undergraduate Students</div>
     
     <div class="students">
-        {% for student in site.data.undergraduate_student %}
-            <div class="student">
-                <div class="student-top">
-                {% if student.image != null and student.image != "" %}
-                    <div class="student-photo" style="background-image:url({{ student.image }})"></div>
-                {% else %}
-                    <div class="student-photo" style="background-image:url(/img/posts/unknown.jpg)"></div>
-                {% endif %}
-                </div>
-    
-                <div class="student-down">
-                    <b class="student-name">{{ student.name }}</b>
-                    <p class="student-field">{{ student.interest }}</p>
-                    <hr class="student-division">
-                    <div class="student-info">
-                        <p class="student-email">{{ student.email }}</p>
-                        <div class="student-link">
-                            {% if student.github != null and student.github != "" %}
-                            <a target="_blank" href="{{ student.github }}"><i class="fab fa-github"></i></a>
-                            {% endif %}
-                            {% if student.instagram != null and student.instagram != "" %}
-                            <a target="_blank" href="{{ student.instagram }}"><i class="fab fa-instagram-square"></i></a>
-                            {% endif %}
-                            {% if student.facebook != null and student.facebook != "" %}
-                            <a target="_blank" href="{{ student.facebook }}"><i class="fab fa-facebook"></i></a>
-                            {% endif %}
-                            {% if student.linkedin != null and student.linkedin != "" %}
-                            <a target="_blank" href="{{ student.linkedin }}"><i class="fab fa-linkedin"></i></a>
-                            {% endif %}
-                        </div>
-                    </div>
-                    
-                </div>
+    {% for student in site.data.undergraduate_student %}
+        <div class="student">
+            <div class="student-top">
+            {% if student.image != null and student.image != "" %}
+                <div class="student-photo" style="background-image:url({{ student.image }})"></div>
+            {% else %}
+                <div class="student-photo" style="background-image:url(/img/posts/unknown.jpg)"></div>
+            {% endif %}
             </div>
-        {% endfor %}
+
+            <div class="student-down">
+                <b class="student-name">{{ student.name }}</b>
+                <p class="student-field">{{ student.interest }}</p>
+                <hr class="student-division">
+                <div class="student-info">
+                    <p class="student-email">{{ student.email }}</p>
+                    <div class="student-link">
+                        {% if student.github != null and student.github != "" %}
+                        <a target="_blank" href="{{ student.github }}"><i class="fab fa-github"></i></a>
+                        {% endif %}
+                        {% if student.instagram != null and student.instagram != "" %}
+                        <a target="_blank" href="{{ student.instagram }}"><i class="fab fa-instagram-square"></i></a>
+                        {% endif %}
+                        {% if student.facebook != null and student.facebook != "" %}
+                        <a target="_blank" href="{{ student.facebook }}"><i class="fab fa-facebook"></i></a>
+                        {% endif %}
+                        {% if student.linkedin != null and student.linkedin != "" %}
+                        <a target="_blank" href="{{ student.linkedin }}"><i class="fab fa-linkedin"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </div>
         </div>
+    {% endfor %}
+    </div>
+
+    <div class="division-line">Research Internship</div>
+
+    <div class="students">
+    {% for student in site.data.research_internship %}
+        <div class="student">
+            <div class="student-top">
+            {% if student.image != null and student.image != "" %}
+                <div class="student-photo" style="background-image:url({{ student.image }})"></div>
+            {% else %}
+                <div class="student-photo" style="background-image:url(/img/posts/unknown.jpg)"></div>
+            {% endif %}
+            </div>
+
+            <div class="student-down">
+                <b class="student-name">{{ student.name }}</b>
+                <p class="student-field">{{ student.interest }}</p>
+                <hr class="student-division">
+                <div class="student-info">
+                    <p class="student-email">{{ student.email }}</p>
+                    <div class="student-link">
+                        {% if student.github != null and student.github != "" %}
+                        <a target="_blank" href="{{ student.github }}"><i class="fab fa-github"></i></a>
+                        {% endif %}
+                        {% if student.instagram != null and student.instagram != "" %}
+                        <a target="_blank" href="{{ student.instagram }}"><i class="fab fa-instagram-square"></i></a>
+                        {% endif %}
+                        {% if student.facebook != null and student.facebook != "" %}
+                        <a target="_blank" href="{{ student.facebook }}"><i class="fab fa-facebook"></i></a>
+                        {% endif %}
+                        {% if student.linkedin != null and student.linkedin != "" %}
+                        <a target="_blank" href="{{ student.linkedin }}"><i class="fab fa-linkedin"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="division-line">Alumni</div>
+    <p style="font-size: 1.6rem; color: rgba(0,0,0,0.65);">M.S.</p>
+    <div class="students">
+    {% for alumni in site.data.alumni_grad_ms %}
+        <div class="student">
+            <div class="student-top">
+                <div class="student-photo" style="background-image:url(/img/posts/unknown.jpg)"></div>
+            </div>
+            <div class="student-down">
+                <b class="student-name">{{ alumni.name }}</b>
+                <p class="student-field">{{ alumni.interest }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <p style="font-size: 1.6rem; color: rgba(0,0,0,0.7);">Undergraduate</p>
+    <div class="alumnis">
+    {% for alumni in site.data.alumni_undergrad %}
+        <div class="alumni">
+            <div class="alumni-top">
+                <div class="alumni-photo" style="background-image:url(/img/posts/unknown.jpg)"></div>
+            </div>
+            <div class="alumni-down">
+                <b class="alumni-name">{{ alumni.name }}</b>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 
 </article>
 <hr>
