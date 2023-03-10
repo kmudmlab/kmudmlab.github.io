@@ -1,10 +1,3 @@
-- name: Jaeo Cho
-  image: /img/posts/students/jaeo-cho.png  
-  interest: Large scale graph mining, K-Nearest Neighbors
-  email: cho5095@kookmin.ac.kr
-  github: https://github.com/Grievle
-  instagram: https://www.instagram.com/ding.cho._.jaeo
-
 - name: YooJin Kim
   image: /img/posts/students/yoojin-kim.png
   interest: Data Engineering, Recommendation System
@@ -30,12 +23,6 @@
   email: ldoun8260@gmail.com
   github: https://github.com/Ldoun
   instagram: https://www.instagram.com/doun_8260
-
-- name: YongUk Song
-  image: /img/posts/students/yonguk-song.png
-  interest: Graph Mining, Legal Tech
-  email: songyonguk@kookmin.ac.kr
-  github: https://github.com/songyonguk
 
 - name: MinJun Song
   image: /img/posts/students/minjun-song.png
