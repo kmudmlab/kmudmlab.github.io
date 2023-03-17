@@ -10,29 +10,36 @@
 }
 
 .professor-left{
-    padding-right: 1.5rem;
+    text-align:center;
 }
+
+.professor-right{
+    font-size: 1rem;
+    text-align:center;
+    padding-top:0.5rem;
+}
+
+@media (min-width: 768px) {
+
+    .professor-left{
+        text-align:right;
+        padding-right:5rem;
+    }
+
+    .professor-right{
+        text-align:left;
+    }
+
+}
+
+
 .professor-left > img{
-    display: block;
     width: 17rem;
     height: 17rem;
 }
-.professor-left > div{
-    display: block;
-    padding: 1rem;
-    height: 8rem;
-}
-.professor-left > div > span{
-    display: block;
-    text-align: center;
-    font-size: 12px;
-}
-.professor-right{
-    padding-left: 1rem;
-    border-left: 1px solid silver;
-    overflow: auto;
-    font-size: 1rem;
-}
+
+
+
 .professor-name{
     font-weight:bold;
     font-size: 1.5rem;
