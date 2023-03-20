@@ -44,9 +44,17 @@
     font-weight:bold;
     font-size: 1.5rem;
 }
+
 .professor-field{
-    font-size: 1.05rem;
+    font-size: 0.9rem;
 }
+
+@media (min-width: 768px) {
+    .professor-field{
+        font-size: 1.05rem;
+    }
+}
+
 #professor-link{
     padding: 1rem;
 }
@@ -63,12 +71,13 @@
 }
 .division-line{
     display: flex;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     padding: 0, 1rem;
     flex-basis: width;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: rgba(0,0,0,0.50);
+    text-align: center;
 }
 .division-line::before{
     content: "";
@@ -88,20 +97,72 @@
     background: linear-gradient(to left, #0000, rgba(0,0,0,0.35));
     //background: rgba(0,0,0,0.35);;
 }
+
+@media (min-width: 768px) {
+    .division-line{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+}
+
 .students{
     display: grid;
-    grid-template-columns: repeat(auto-fill, 200px);
-    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, 140px);
+    justify-content: space-evenly;
 }
+
 .student{
     display: inline;
     text-align: center;
     margin-bottom: 1rem;
-    width: 200px;
+    width: 140px;
 }
+
+.student-photo{
+    width: 140px;
+    height: 140px;
+    background-size: cover;
+}
+
 .student-name{
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
+
+.student-email{
+    font-size: 0.7rem;
+    margin: 0.5rem 0;
+}
+
+.student-field{
+    font-size: 0.7rem;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+}
+
+@media (min-width: 768px) {
+    .students{
+        grid-template-columns: repeat(auto-fill, 200px);
+    }
+    .student{
+        width:200px;
+    }
+    .student-photo{
+        width: 200px;
+        height: 200px;
+    }
+    .student-name{
+        font-size: 1.5rem;
+    }
+    .student-email{
+        font-size: 0.85rem;
+    }
+    .student-field{
+        font-size: 1rem;
+    }
+}
+
+
 .student-top{
     margin-bottom: 0.5rem;
 }
@@ -110,15 +171,8 @@
     height: 12rem;
     object-fit: cover;
 }
-.student-field{
-    font-size: 1rem;
-    margin-top: 0;
-    margin-bottom: 0.8rem;
-}
-.student-email{
-    font-size: 0.85rem;
-    margin: 0.5rem 0;
-}
+
+
 .student-link{
     text-align: center;
 }
@@ -129,11 +183,7 @@
     background-color: #fff;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
-.student-photo{
-    width: 200px;
-    height: 200px;
-    background-size: cover;
-}
+
 
 
 .alumnis{
