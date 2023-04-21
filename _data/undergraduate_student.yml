@@ -1,21 +1,9 @@
-- name: YooJin Kim
-  image: /img/posts/students/yoojin-kim.png
-  interest: Data Engineering, Recommendation System
-  email: yyjin12171@kookmin.ac.kr
-  github: https://github.com/Erica1217
-  instagram: https://www.instagram.com/yu._.jeans
-  
+
 - name: SoJung Lee
   image: /img/posts/students/sojung-lee.png
   interest: Recommender Systems, K-Nearest Neighbors
   email: prikey7@kookmin.ac.kr
   github: https://github.com/grapefruit224
-
-- name: JunKwan Kim
-  image: ~
-  interest: ~
-  email: ~
-  github: ~
 
 - name: Doun Lee
   image: /img/posts/students/doun-lee.png
@@ -23,13 +11,6 @@
   email: ldoun8260@gmail.com
   github: https://github.com/Ldoun
   instagram: https://www.instagram.com/doun_8260
-
-- name: MinJun Song
-  image: /img/posts/students/minjun-song.png
-  interest: K-Nearest Neighbors
-  email: minjun7410@kookmin.ac.kr
-  github: http://github.com/minjun7410
-  instagram: https://www.instagram.com/minjun8739/
   
 - name: HyeSung Kim
   image: /img/posts/students/hyesung-kim.png
