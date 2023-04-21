@@ -1,7 +1,13 @@
+- title: 시간 라벨 데이터에서의 효율적인 KNN 탐색
+  presenter: 한창훈
+  date: 2023-04-28
+- title: "W-Net: A Deep Model for Fully Unsupervised Image Segmentation"
+  presenter: Ismail
+  date: 2023-04-14
 - title: Data Augmentation for Graph Neural Networks
   presenter: 박현석
   date: 2023-03-24
-- title: The Elements of Style - An Approach to Style(With a List of Reminders) 
+- title: The Elements of Style - An Approach to Style(With a List of Reminders)
   presenter: 김상홍
   date: 2023-03-10
 - title: The Elements of Style - A Few Matters of Form, Words and Expression Commonly Misused
