@@ -1,4 +1,10 @@
 - title: 시간 라벨 데이터에서의 효율적인 KNN 탐색
+  presenter: 김수지
+  date: 2023-05-26
+- title: Tutorial on Variational Autoencoders
+  presenter: 이영준
+  date: 2023-05-12
+- title: Attention is all you need
   presenter: 한창훈
   date: 2023-04-28
 - title: "W-Net: A Deep Model for Fully Unsupervised Image Segmentation"
