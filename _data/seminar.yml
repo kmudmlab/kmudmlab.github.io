@@ -1,3 +1,9 @@
+- title: "GPT-GNN: Generative Pre-Training of Graph Neural Networks"
+  presenter: 김민형
+  date: 2023-06-09
+- title: '"Why should I Trust You?" Explaining the Predictions of Any Classifier'
+  presenter: 강지수
+  date: 2023-06-02
 - title: 시간 라벨 데이터에서의 효율적인 KNN 탐색
   presenter: 김수지
   date: 2023-05-26
