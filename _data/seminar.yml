@@ -1,25 +1,33 @@
+- title: "Vision GNN: An Image is Worth Graph of Nodes"
+  presenter: Ismail
+  date: 2023-07-12
+  slide: /assets/pdf/Vision GNN- An Image is Worth Graph of Nodes.pdf
 - title: On the Unreasonable Effectiveness of Feature Propagation in Learning on Graph with Missing Node Features
   presenter: 박현석
   date: 2023-07-05
-  slide: https://kmudmlab.github.io
 - title: Self-Attentive Sequential Recommendation
   presenter: 이영준 
   date: 2023-06-28
+  slide: /assets/pdf/Self-Attentive Sequential Recommendatiaon.pdf
 - title: "GPT-GNN: Generative Pre-Training of Graph Neural Networks"
   presenter: 김민형
   date: 2023-06-21
+  slide: /assets/pdf/GPT-GNN.pdf
 - title: '"Why should I Trust You?" Explaining the Predictions of Any Classifier'
   presenter: 강지수
   date: 2023-06-02
+  slide: /assets/pdf/Why Should I Trust You_Explaining the Predictions of Any Classifier.pdf
 - title: 시간 라벨 데이터에서의 효율적인 KNN 탐색
   presenter: 김수지
   date: 2023-05-26
+  slide: /assets/pdf/시간라벨데이터에서의효율적인KNN탐색.pdf
 - title: Tutorial on Variational Autoencoders
   presenter: 이영준
   date: 2023-05-12
 - title: Attention is all you need
   presenter: 한창훈
   date: 2023-04-28
+  slide: /assets/pdf/attention_is_all_you_need.pdf
 - title: "W-Net: A Deep Model for Fully Unsupervised Image Segmentation"
   presenter: Ismail
   date: 2023-04-14
