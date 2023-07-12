@@ -34,6 +34,11 @@ background: '/img/bg-post.jpg'
                 <td style="text-align:center">{{ item.date }}</td>
                 <td style="text-align:center">{{ item.presenter }}</td>
                 <td>{{ item.title }}</td>
+                <td>
+                    {% if item.slide != null and item.slide != "" %}
+                    <a href="{{ item.slide }}">[slide]</a>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>
