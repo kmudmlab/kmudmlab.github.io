@@ -31,3 +31,7 @@ jobs:
       run: python .github/workflows/seminar-notification.py
       env:
         COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        BOT_TOKEN: ${{secrets.BOT_TOKEN}}
+        BASE_URL: ${{secrets.BASE_URL}}
+        TEAM_ID: ${{secrets.TEAM_ID}}
+        BOT_ID: ${{secrets.BOT_ID}}
