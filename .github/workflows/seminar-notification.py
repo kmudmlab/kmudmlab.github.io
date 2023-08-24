@@ -38,4 +38,4 @@ def post_message(channel_id:str, message:str, props:object={}):
     return res
 
 if '세미나' in COMMIT_MESSAGE or 'seminar' in COMMIT_MESSAGE.lower():
-    post_message(find_channel('seminar')['id'], f'[세미나 업데이트 알림] {COMMIT_MESSAGE}: https://kmudmlab.github.io/seminar')
+    post_message(find_channel('seminar')['id'], f'[세미나 업데이트 알림]\n{COMMIT_MESSAGE}\nhttps://kmudmlab.github.io/seminar')
