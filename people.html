@@ -124,7 +124,11 @@ background: '/img/bg-about.jpg'
     {% for alumni in site.data.alumni_grad_ms %}
         <div class="student">
             <div class="student-top">
+            {% if alumni.image != null and alumni.image != "" %}
+                <div class="student-photo" style="background-image:url({{ alumni.image }})"></div>
+            {% else %}
                 <div class="student-photo" style="background-image:url(/img/posts/unknown.jpg)"></div>
+            {% endif %}
             </div>
             <div class="student-down">
                 <b class="student-name">{{ alumni.name }}</b>
@@ -138,6 +142,7 @@ background: '/img/bg-about.jpg'
     <div class="alumnis">
     {% for alumni in site.data.alumni_undergrad %}
         <div class="alumni">
+
             <div class="alumni-top">
                 <div class="alumni-photo" style="background-image:url(/img/posts/unknown.jpg)"></div>
             </div>

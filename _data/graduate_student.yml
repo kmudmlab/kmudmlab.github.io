@@ -1,10 +1,3 @@
-- name: SangHong Kim
-  image: /img/posts/students/sanghong-kim.png
-  interest: K-Nearest Neighbors, Graph Algorithms
-  email: bconfiden2@naver.com
-  github: https://github.com/bconfiden2
-  linkedin: https://www.linkedin.com/in/sang-hong-kim-a76203218/
-  
 - name: HyunSeok Park
   image: /img/posts/students/hyunseok-park.png
   interest: Graph Neural Networks, K-cores
