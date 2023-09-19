@@ -23,10 +23,10 @@ CREDENTIAL = {
   "universe_domain": "googleapis.com"
 }
 
-json.dump(CREDENTIAL, open('.github/workflows/credential.json', 'w'))
+json.dump(CREDENTIAL, open('./credential.json', 'w'))
 
 creds = service_account.Credentials.from_service_account_file(
-    '.github/workflows/credential.json',
+    './credential.json',
     scopes=['https://www.googleapis.com/auth/calendar']
 )
 
@@ -80,4 +80,4 @@ print(f'{add_cnt}개의 세미나 이벤트를 추가했습니다.')
 
 # step 3: remove credential.json
 
-os.remove('.github/workflows/credential.json')
+os.remove('./credential.json')
