@@ -5,9 +5,8 @@ from googleapiclient.discovery import build
 import datetime  
 import yaml
 
-PRIVATE_KEY_ID = eval(os.getenv('PRIVATE_KEY_ID'))
-PRIVATE_KEY = eval(os.getenv('PRIVATE_KEY'))
-
+PRIVATE_KEY_ID = os.getenv('PRIVATE_KEY_ID')
+PRIVATE_KEY = os.getenv('PRIVATE_KEY').replace('\\n', '\n')
 
 CREDENTIAL = {
   "type": "service_account",
