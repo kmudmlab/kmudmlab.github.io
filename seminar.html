@@ -12,14 +12,35 @@ background: '/img/bg-post.jpg'
         <p>We hold seminars on large-scale data processing, graph AI, distributed graph algorithms, and any others related to data mining.</p>
         <p>The information on the seminar is as follows:</p>
         <ul>
-            <li>Every Wednesday 6:00 pm - 6:40 pm</li>
+            <li>Wednesday 6:00 pm - 6:40 pm</li>
             <li>P-Lab(609), Futuer Hall, Kookmin University</li>
             <li>Topic: On-going researches and data mining research papers (KDD, ICDM, ICDE, CIKM, etc.)</li>
         </ul>
     </div> 
-    
+
     <br>
-    <h3>Schedule</h3>
+    <h3>Upcoming Seminars (tentative)</h3>
+    <br>
+    
+    <table class="table table-striped">
+        <thead>
+            <th scope="col" style="text-align:center">Date</th>
+            <th scope="col" style="text-align:center">Presenter</th>
+        </thead>
+        <tbody>
+            {% for item in site.data.seminar reversed %}
+            {% if item.title == "TBD" %}
+            <tr>
+                <td style="text-align:center">{{ item.date }}</td>
+                <td style="text-align:center">{{ item.presenter }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <h3>Previous Seminars</h3>
     <br>
 
     <table class="table table-striped">
@@ -31,6 +52,7 @@ background: '/img/bg-post.jpg'
         </thead>
         <tbody>
             {% for item in site.data.seminar %}
+            {% if item.title != null and item.title != "TBD" %}
             <tr>
                 <td style="text-align:center">{{ item.date }}</td>
                 <td style="text-align:center">{{ item.presenter }}</td>
@@ -41,6 +63,7 @@ background: '/img/bg-post.jpg'
                     {% endif %}
                 </td>
             </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
     </table>
