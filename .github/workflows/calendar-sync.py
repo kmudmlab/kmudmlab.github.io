@@ -35,8 +35,7 @@ print('캘린더 로드 완료')
 
 calendar_id='kmudmlab2023@gmail.com'
 time_min = "2019-01-01T00:00:00.000000Z"
-events_result = service.events().list(calendarId=calendar_id, timeMin=time_min,
-    maxResults=200, singleEvents=False).execute()
+events_result = service.events().list(calendarId=calendar_id, timeMin=time_min, singleEvents=True).execute()
 
 removed_cnt = 0
 for event in events_result['items']:
@@ -49,7 +48,6 @@ for event in events_result['items']:
         pass
 
 print(f'{removed_cnt}개의 세미나 이벤트를 삭제했습니다.')
-
 add_cnt = 0
 with open('_data/seminar.yml') as f:
     items = yaml.load(f, Loader=yaml.FullLoader)
