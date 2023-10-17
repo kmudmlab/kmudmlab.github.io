@@ -14,10 +14,10 @@
   presenter: 한창훈
   date: 2023-10-18
   slide: 
-- title: "TBD"
+- title: "Secure Content-Based Image Retrieval with Image Ambiguation"
   presenter: 이스마일
   date: 2023-10-11
-  slide: 
+  slide: /assets/pdf/1011_ismail.pdf
 - title: "Reverse Graph Learning for Graph Neural Network"
   presenter: 박현석
   date: 2023-09-13
