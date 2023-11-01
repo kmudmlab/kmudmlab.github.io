@@ -10,10 +10,10 @@
   presenter: 이영준
   date: 2023-11-15
   slide: 
-- title: "TBD"
+- title: "Graph Attention Network"
   presenter: 한창훈
   date: 2023-11-01
-  slide: 
+  slide: /assets/pdf/1101_noye.pdf
 - title: "Secure Content-Based Image Retrieval with Image Ambiguation"
   presenter: 이스마일
   date: 2023-10-11
