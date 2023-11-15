@@ -6,10 +6,10 @@
   presenter: 김수지
   date: 2023-11-29
   slide: 
-- title: "TBD"
+- title: "A Simple Framework for Contrastive Learning of Visual Representations"
   presenter: 이영준
   date: 2023-11-15
-  slide: 
+  slide: /assets/pdf/yj_1115.pdf
 - title: "Graph Attention Network"
   presenter: 한창훈
   date: 2023-11-01
