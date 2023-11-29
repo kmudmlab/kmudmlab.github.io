@@ -2,10 +2,10 @@
   presenter: 강지수
   date: 2023-12-13
   slide: 
-- title: "TBD"
+- title: "Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization"
   presenter: 김수지
   date: 2023-11-29
-  slide: 
+  slide: /assets/pdf/1129_sj.pdf
 - title: "A Simple Framework for Contrastive Learning of Visual Representations"
   presenter: 이영준
   date: 2023-11-15
