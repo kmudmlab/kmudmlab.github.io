@@ -1,7 +1,7 @@
 
 - name: SoJung Lee
   image: /img/posts/students/sojung-lee.png
-  interest: Recommender Systems, K-Nearest Neighbors
+  interest: Recommendation System, K-Nearest Neighbors
   email: prikey7@kookmin.ac.kr
   github: https://github.com/grapefruit224
 
@@ -13,7 +13,7 @@
   github: https://github.com/Borikhs/
 
 - name: YoungRak Choi
-  image: /img/posts/students/young-rak.jpeg
+  image: /img/posts/students/youngrak-choi.jpeg
   interest: Graph Neural Network
   email: chldudfkr119@kookmin.ac.kr
   github: https://github.com/guahama
@@ -29,3 +29,15 @@
   interest: Graph Algorithms
   email: kookmin1916@kookmin.ac.kr
   github: https://github.com/Neogulee
+
+- name: SeWon Hong
+  image: /img/posts/students/sewon-hong.jpg
+  interest: Recommendation System
+  email: hsw1805@kookmin.ac.kr
+  github:
+
+- name: DaWit Kwak
+  image: /img/posts/students/dawit-kwak.jpg
+  interest: Recommendation System
+  email: dawit@kookmin.ac.kr
+  github: https://github.com/dawit0905
