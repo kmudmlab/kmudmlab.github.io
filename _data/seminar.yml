@@ -2,10 +2,10 @@
   presenter: 한창훈
   date: 2023-02-28
   slide:
-- title: "TBD"
+- title: "Do Transformers Really Perform Bad for Graph Representation?"
   presenter: 이영준
   date: 2023-02-15
-  slide:
+  slide:/assets/pdf/0215_yj.pdf
 - title: "Less is More: SlimG for Accurate, Robust, and Interpretable Graph Mining"
   presenter: 김민형
   date: 2023-01-31
