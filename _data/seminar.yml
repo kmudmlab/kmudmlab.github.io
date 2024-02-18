@@ -5,7 +5,7 @@
 - title: "Do Transformers Really Perform Bad for Graph Representation?"
   presenter: 이영준
   date: 2023-02-15
-  slide: /assets/pdf/0215_yj.pdf
+  slide: /assets/pdf/0215_yj
 - title: "Less is More: SlimG for Accurate, Robust, and Interpretable Graph Mining"
   presenter: 김민형
   date: 2023-01-31
@@ -25,7 +25,7 @@
 - title: "A Simple Framework for Contrastive Learning of Visual Representations"
   presenter: 이영준
   date: 2023-11-15
-  slide: /assets/pdf/1115_yj.pdf
+  slide: /assets/pdf/1115_yj
 - title: "Graph Attention Network"
   presenter: 한창훈
   date: 2023-11-01
