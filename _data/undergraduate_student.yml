@@ -1,11 +1,3 @@
-
-- name: SoJung Lee
-  image: /img/posts/students/sojung-lee.png
-  interest: Recommendation System, K-Nearest Neighbors
-  email: prikey7@kookmin.ac.kr
-  github: https://github.com/grapefruit224
-
-  
 - name: HyeSung Kim
   image: /img/posts/students/hyesung-kim.png
   interest: Graph Neural Network, Data Engineering
@@ -18,12 +10,6 @@
   email: chldudfkr119@kookmin.ac.kr
   github: https://github.com/guahama
 
-- name: KiYeon Park
-  image: /img/posts/students/kiyeon-park.jpg
-  interest: Spatial-Temporal Graph Neural Network
-  email: willam1017@kookmin.ac.kr
-  github: https://github.com/MargielaParis
-
 - name: SungHoon Choe
   image: /img/posts/students/sunghoon-choe.jpg
   interest: Graph Algorithms
@@ -35,9 +21,3 @@
   interest: Recommendation System
   email: hsw1805@kookmin.ac.kr
   github:
-
-- name: DaWit Kwak
-  image: /img/posts/students/dawit-kwak.jpg
-  interest: Recommendation System
-  email: dawit@kookmin.ac.kr
-  github: https://github.com/dawit0905

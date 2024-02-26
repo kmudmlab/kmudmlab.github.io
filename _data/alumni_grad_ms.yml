@@ -4,3 +4,17 @@
 - name: SangHong Kim
   interest: K-Nearest Neighbors, Graph Algorithms
   image: /img/posts/students/sanghong-kim.png
+
+- name: HyunSeok Park
+  image: /img/posts/students/hyunseok-park.png
+  interest: Graph Neural Networks, K-cores
+  email: 20151741@kookmin.ac.kr
+  github: https://github.com/gustjr7879
+  instagram: https://www.instagram.com/hyunskki/
+
+- name: Ismail Abdulhakin
+  image: /img/posts/students/ismail-abdulhakin.png
+  interest: Deep-learning Methods, Weather Analysis
+  email: iamismail@kookmin.ac.kr
+  github: https://github.com/iamismaill
+  linkedin: https://www.linkedin.com/in/abdulhakin-m-ismail-2715b0151/
