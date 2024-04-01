@@ -1,5 +1,6 @@
 - name: ChangHun Han
-  image: /img/posts/students/changhun-han.png
+  # image: /img/posts/students/changhun-han.png
+  image: /img/posts/students/noye_ky.png
   interest: Large scale graph mining, K-Nearest Neighbors
   email: codingnoye@kookmin.ac.kr
   github: https://github.com/codingnoye
@@ -11,7 +12,8 @@
   github: https://github.com/kyun2024
   
 - name: SuJi Kim
-  image: /img/posts/students/suji-kim.png
+  # image: /img/posts/students/suji-kim.png
+  image: /img/posts/students/suji_ky.jpg
   interest: K-Nearest Neighbors
   email: suji2924@kookmin.ac.kr
   github: https://github.com/suji2924
