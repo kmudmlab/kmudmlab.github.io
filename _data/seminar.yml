@@ -4,9 +4,10 @@
 - title: "TBD"
   presenter: 박기연
   date: 2024-05-22
-- title: "TBD"
+- title: "Product Quantization in Similarity Search"
   presenter: 김수지
   date: 2024-05-08
+  slide: /assets/pdf/suji_0508.pdf
 - title: "Efficient Proximity Search in Time-accumulating High-dimensional Data using Multi-level Block Indexing"
   presenter: 한창훈
   date: 2024-02-28
