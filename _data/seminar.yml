@@ -1,9 +1,10 @@
 - title: "TBD"
   presenter: 강지수
   date: 2024-06-12
-- title: "TBD"
+- title: "Learning to Remeber Patterns: Pattern Matching Memory Networks for Traffic Forecasting"
   presenter: 박기연
   date: 2024-05-29
+  slide: /assets/pdf/0529Kiyeon.pdf
 - title: "Product Quantization in Similarity Search"
   presenter: 김수지
   date: 2024-05-08
