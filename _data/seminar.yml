@@ -1,6 +1,7 @@
-- title: "TBD"
+- title: "Retrieval-Augmented Generation"
   presenter: 강지수
-  date: 2024-06-12
+  date: 2024-06-19
+  slide: /assets/pdf/0619_jisu.pdf
 - title: "Learning to Remeber Patterns: Pattern Matching Memory Networks for Traffic Forecasting"
   presenter: 박기연
   date: 2024-05-29
