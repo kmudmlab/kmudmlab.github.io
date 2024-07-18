@@ -10,10 +10,10 @@
   presenter: 한창훈
   date: 2024-07-31
   # slide: /assets/pdf/
-- title: "TBD"
+- title: "Bootstrap Your Own Latent : A New Approach to Self-Supervised Learning"
   presenter: 이영준
   date: 2024-07-17
-  # slide: /assets/pdf/
+  slide: /assets/pdf/yj_0717.pdf
 - title: "A Gradient Boosting Approach for Training Convolutional and Deep Neural Networks"
   presenter: 김민형 
   date: 2024-07-03
