@@ -6,10 +6,10 @@
   presenter: 김수지
   date: 2024-08-14
   # slide: /assets/pdf/
-- title: "TBD"
+- title: "Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs"
   presenter: 한창훈
   date: 2024-07-31
-  # slide: /assets/pdf/
+  slide: /assets/pdf/0731_noye.pdf
 - title: "Bootstrap Your Own Latent : A New Approach to Self-Supervised Learning"
   presenter: 이영준
   date: 2024-07-17
