@@ -2,10 +2,10 @@
   presenter: 박기연
   date: 2024-08-28
   # slide: /assets/pdf/
-- title: "TBD"
+- title: "Cache locality is not enough : High-Performance Nearest Neighbor Search with Product Quantization Fast Scan"
   presenter: 김수지
   date: 2024-08-14
-  # slide: /assets/pdf/
+  slide: /assets/pdf/0814_sj.pdf
 - title: "Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs"
   presenter: 한창훈
   date: 2024-07-31
