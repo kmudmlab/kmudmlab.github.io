@@ -4,11 +4,11 @@
   email: khs0020@kookmin.ac.kr
   github: https://github.com/Borikhs/
 
-- name: YoungRak Choi
-  image: /img/posts/students/youngrak-choi.jpeg
-  interest: Graph Neural Network
-  email: chldudfkr119@kookmin.ac.kr
-  github: https://github.com/guahama
+# - name: YoungRak Choi
+#   image: /img/posts/students/youngrak-choi.jpeg
+#   interest: Graph Neural Network
+#   email: chldudfkr119@kookmin.ac.kr
+#   github: https://github.com/guahama
 
 - name: SungHoon Choe
   image: /img/posts/students/sunghoon-choe.jpg
@@ -33,11 +33,11 @@
   interest: Data Engineering
   email: som990101@gmail.com
 
-- name: SungWon Park
-  image: /img/posts/students/sungwon-park.jpg
-  interest: Deep Learning
-  email: tjddnjs612@kookmin.ac.kr
-  github: https://github.com/Solid9966
+# - name: SungWon Park
+#   image: /img/posts/students/sungwon-park.jpg
+#   interest: Deep Learning
+#   email: tjddnjs612@kookmin.ac.kr
+#   github: https://github.com/Solid9966
 
 - name: SeongHo Kim
   image: /img/posts/students/seongho-kim.jpg
