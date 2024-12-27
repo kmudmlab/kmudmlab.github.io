@@ -22,10 +22,10 @@
 #   email: ap25ap25@kookmin.ac.kr
 #   github: https://github.com/Chani0125
 
-- name: MunJoo Park
-  image: /img/posts/students/munjoo-park.jpeg
-  interest: Data Engineering
-  email: som990101@gmail.com
+# - name: MunJoo Park
+#   image: /img/posts/students/munjoo-park.jpeg
+#   interest: Data Engineering
+#   email: som990101@gmail.com
 
 # - name: SungWon Park
 #   image: /img/posts/students/sungwon-park.jpg
@@ -44,17 +44,17 @@
   interest: Recommendation System
   email: kiwi0coding@gmail.com
 
-- name: HyeonSang Cho
-  image: /img/posts/students/hyeonsang-cho.jpg
-  interest: Recommendation System
-  email: kyr76767@kookmin.ac.kr
+# - name: HyeonSang Cho
+#   image: /img/posts/students/hyeonsang-cho.jpg
+#   interest: Recommendation System
+#   email: kyr76767@kookmin.ac.kr
 
 - name: GaHyun Lee
   image: /img/posts/students/gahyun-lee.jpg
   interest: Recommendation System
   email: anna030608@gmail.com
 
-- name: ChaeWon Jeong
-  image: /img/posts/students/cwjeong.jpg
-  interest: Recommendation System
-  email: chloe3205@kookmin.ac.kr
+# - name: ChaeWon Jeong
+#   image: /img/posts/students/cwjeong.jpg
+#   interest: Recommendation System
+#   email: chloe3205@kookmin.ac.kr
