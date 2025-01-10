@@ -12,7 +12,7 @@
 
 - name: SeWon Hong
   image: /img/posts/students/sewon-hong.jpg
-  interest: Recommendation System
+  interest: Recommendation Systems
   email: hsw1805@kookmin.ac.kr
   github:
 
@@ -41,7 +41,7 @@
 
 - name: HaWoon Kang
   image: /img/posts/students/hawoon-kang.jpg
-  interest: Recommendation System
+  interest: Recommendation Systems
   email: kiwi0coding@gmail.com
 
 # - name: HyeonSang Cho
@@ -51,7 +51,7 @@
 
 - name: GaHyun Lee
   image: /img/posts/students/gahyun-lee.jpg
-  interest: Recommendation System
+  interest: Recommendation Systems
   email: anna030608@gmail.com
 
 # - name: ChaeWon Jeong
@@ -61,7 +61,7 @@
 
 - name: GyeongRin Baek
   image: /img/posts/students/gyeongrin-baek.jpg
-  interest: Recommendation System
+  interest: Recommendation Systems
   email: back9656@kookmin.ac.kr
 
 - name: KeunSeo Jang
@@ -69,3 +69,7 @@
   interest: Large Language Model, Reinforcement Learning
   email: jangks23@kookmin.ac.kr
 
+- name: HoYong Jeong
+  image: /img/posts/students/hoyong-jeong.jpg
+  interest: Recommendation Systems
+  email: ghdyd586@gmail.com
