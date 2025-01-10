@@ -58,3 +58,14 @@
 #   image: /img/posts/students/cwjeong.jpg
 #   interest: Recommendation System
 #   email: chloe3205@kookmin.ac.kr
+
+- name: GyeongRin Baek
+  image: /img/posts/students/gyeongrin-baek.jpg
+  interest: Recommendation System
+  email: back9656@kookmin.ac.kr
+
+- name: KeunSeo Jang
+  image: /img/posts/students/keunseo-jang.jpg
+  interest: Large Language Model, Reinforcement Learning
+  email: jangks23@kookmin.ac.kr
+
