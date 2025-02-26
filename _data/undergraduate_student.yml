@@ -4,12 +4,6 @@
 #   email: chldudfkr119@kookmin.ac.kr
 #   github: https://github.com/guahama
 
-- name: SungHoon Choe
-  image: /img/posts/students/sunghoon-choe.jpg
-  interest: Graph Algorithms
-  email: kookmin1916@kookmin.ac.kr
-  github: https://github.com/Neogulee
-
 - name: SeWon Hong
   image: /img/posts/students/sewon-hong.jpg
   interest: Recommendation Systems
@@ -54,10 +48,10 @@
   interest: Recommendation Systems
   email: anna030608@gmail.com
 
-# - name: ChaeWon Jeong
-#   image: /img/posts/students/cwjeong.jpg
-#   interest: Recommendation System
-#   email: chloe3205@kookmin.ac.kr
+- name: ChaeWon Jeong
+  image: /img/posts/students/cwjeong.jpg
+  interest: Recommendation System
+  email: chloe3205@kookmin.ac.kr
 
 - name: GyeongRin Baek
   image: /img/posts/students/gyeongrin-baek.jpg
