@@ -4,7 +4,7 @@
 #   email: chldudfkr119@kookmin.ac.kr
 #   github: https://github.com/guahama
 
-- name: SeWon Hong
+- name: SeWon Hong (홍세원)
   image: /img/posts/students/sewon-hong.jpg
   interest: Recommendation Systems
   email: hsw1805@kookmin.ac.kr
@@ -27,13 +27,13 @@
 #   email: tjddnjs612@kookmin.ac.kr
 #   github: https://github.com/Solid9966
 
-- name: SeongHo Kim
-  image: /img/posts/students/seongho-kim.jpg
-  interest: Clustering
-  email: ho44013@kookmin.ac.kr
-  github: https://github.com/ho44013
+# - name: SeongHo Kim
+#   image: /img/posts/students/seongho-kim.jpg
+#   interest: Clustering
+#   email: ho44013@kookmin.ac.kr
+#   github: https://github.com/ho44013
 
-- name: HaWoon Kang
+- name: HaWoon Kang (강하운)
   image: /img/posts/students/hawoon-kang.jpg
   interest: Recommendation Systems
   email: kiwi0coding@gmail.com
@@ -43,37 +43,47 @@
 #   interest: Recommendation System
 #   email: kyr76767@kookmin.ac.kr
 
-- name: GaHyun Lee
+- name: GaHyun Lee (이가현)
   image: /img/posts/students/gahyun-lee.jpg
   interest: Recommendation Systems
   email: anna030608@gmail.com
 
-- name: ChaeWon Jeong
+- name: ChaeWon Jeong (정채원)
   image: /img/posts/students/cwjeong.jpg
   interest: Recommendation System
   email: chloe3205@kookmin.ac.kr
 
-- name: GyeongRin Baek
+- name: GyeongRin Baek (백경린)
   image: /img/posts/students/gyeongrin-baek.jpg
   interest: Recommendation Systems
   email: back9656@kookmin.ac.kr
 
-- name: KeunSeo Jang
+- name: KeunSeo Jang (장근서)
   image: /img/posts/students/keunseo-jang.jpg
   interest: Large Language Model, Reinforcement Learning
   email: jangks23@kookmin.ac.kr
 
-- name: HoYong Jeong
-  image: /img/posts/students/hoyong-jeong.jpg
-  interest: Recommendation Systems
-  email: ghdyd586@gmail.com
+# - name: HoYong Jeong
+#   image: /img/posts/students/hoyong-jeong.jpg
+#   interest: Recommendation Systems
+#   email: ghdyd586@gmail.com
 
-- name: WonCheol Son
+- name: WonCheol Son (손원철)
   image: /img/posts/students/woncheol-son.jpg
   interest: Recommendation Systems
   email: sonwon9@kookmin.ac.kr
 
-- name: Jung Eun Park
+- name: Jung Eun Park (박정은)
   image: /img/posts/students/jungeunpark.jpg
   interest: Graph Representation Learning
   email: ovepje2004@kookmin.ac.kr
+  
+- name: Joonseo Yoon (윤준서)
+  # image: /img/posts/students/jungeunpark.jpg
+  interest: LLM Compression
+  email: joonseojj@kookmin.ac.kr
+
+- name: Sunwoo Park (박선우)
+  # image: /img/posts/students/jungeunpark.jpg
+  interest: LLM Compression
+  email: joonseojj@kookmin.ac.kr
