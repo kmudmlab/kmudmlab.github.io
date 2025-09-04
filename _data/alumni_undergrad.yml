@@ -27,3 +27,31 @@
   interest: Graph Algorithms
   email: kookmin1916@kookmin.ac.kr
   github: https://github.com/Neogulee
+
+- name: YoungRak Choi
+  image: /img/posts/students/youngrak-choi.jpeg
+  interest: Graph Neural Network
+  email: chldudfkr119@kookmin.ac.kr
+  github: https://github.com/guahama
+
+- name: SeWon Hong (홍세원)
+  image: /img/posts/students/sewon-hong.jpg
+  interest: Recommendation Systems
+  email: hsw1805@kookmin.ac.kr
+  github:
+
+- name: SeongHo Kim
+  image: /img/posts/students/seongho-kim.jpg
+  interest: Clustering
+  email: ho44013@kookmin.ac.kr
+  github: https://github.com/ho44013
+
+- name: HaWoon Kang (강하운)
+  image: /img/posts/students/hawoon-kang.jpg
+  interest: Recommendation Systems
+  email: kiwi0coding@gmail.com
+
+- name: GaHyun Lee (이가현)
+  image: /img/posts/students/gahyun-lee.jpg
+  interest: Recommendation Systems
+  email: anna030608@gmail.com
