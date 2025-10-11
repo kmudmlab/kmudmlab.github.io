@@ -58,10 +58,10 @@
   interest: Recommendation Systems
   email: back9656@kookmin.ac.kr
 
-- name: KeunSeo Jang (장근서)
-  image: /img/posts/students/keunseo-jang.jpg
-  interest: Large Language Model, Reinforcement Learning
-  email: jangks23@kookmin.ac.kr
+#- name: KeunSeo Jang (장근서)
+#  image: /img/posts/students/keunseo-jang.jpg
+#  interest: Large Language Model, Reinforcement Learning
+#  email: jangks23@kookmin.ac.kr
 
 # - name: HoYong Jeong
 #   image: /img/posts/students/hoyong-jeong.jpg
@@ -88,7 +88,7 @@
   interest: LLM Compression
   email: shark820@kookmin.ac.kr
 
-- name: ??? (조아영)
+- name: Ahyoung Cho (조아영)
   # image: /img/posts/students/jungeunpark.jpg
   interest: GNN for Brain Analysis
   email: shark820@kookmin.ac.kr
