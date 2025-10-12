@@ -1,0 +1,12 @@
+header:
+  - titles:
+      en      : &EN      Home
+    url : / 
+
+  - titles:
+      en      : &EN      Members
+    url : /members/
+
+  - titles:
+      en      : &EN      Publications
+    url : /publications/

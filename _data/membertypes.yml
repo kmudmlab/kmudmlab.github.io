@@ -1,0 +1,11 @@
+- type: prof
+  label: Principal Investigator
+- type: grad
+  label: Graduate Students
+- type: under
+  label: Undergraduate Students
+- type: intern
+  label: Research Interns
+- type: alumni
+  noimage: true
+  label: Alumni

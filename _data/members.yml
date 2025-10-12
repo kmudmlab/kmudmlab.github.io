@@ -1,0 +1,250 @@
+- name:
+    en: Ha-Myung Park
+    ko: 박하명
+  type: prof
+  image: hmpark.png
+  email: hmpark@kookmin.ac.kr
+  homepage: https://hmpark.me
+  github: 
+  instagram: https://www.instagram.com/hamyung.park/
+  gscholar: https://scholar.google.com/citations?hl=ko&user=PqGNewQAAAAJ
+  youtube: https://www.youtube.com/@kmuhmpark
+
+- name:
+    en: KiYeon Park
+    ko: 박기연
+  type: grad
+  image: kiyeon-park.jpg
+  email: willam1017@kookmin.ac.kr
+  homepage: 
+  github: https://github.com/MargielaParis
+
+- name:
+    en: Woosung Cho
+    ko: 조우성
+  type: grad
+  image: 
+  email: chowoos@kookmin.ac.kr
+  homepage: 
+  github:
+
+
+- name:
+    en: ChaeWon Jeong
+    ko: 정채원
+  type: under
+  image: cwjeong.jpg
+  email: chloe3205@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: GyeongRin Baek
+    ko: 백경린
+  type: under
+  image: gyeongrin-baek.jpg
+  email: back9656@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: WonCheol Son
+    ko: 손원철
+  type: under
+  image: woncheol-son.jpg
+  email: sonwon9@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: Jung Eun Park
+    ko: 박정은
+  type: under
+  image: jungeunpark.jpg
+  email: ovepje2004@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: Junseo Yoon
+    ko: 윤준서
+  type: under
+  image: yoonjunseo.jpg
+  email: joonseojj@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: Sunwoo Park
+    ko: 박선우
+  type: under
+  image: 
+  email: shark820@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: Ahyoung Cho
+    ko: 조아영
+  type: under
+  image: 
+  email: shark820@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: YoonJun Kim
+    ko: 김윤준
+  type: intern
+  youtube: https://www.youtube.com/@%EB%96%A8%EC%96%B4%EC%A7%80%EB%8A%94%EB%84%88%EC%9D%98%EB%AA%A8%EC%8A%B5
+
+
+
+- name:
+    en: ChaeEun Kim
+    ko: 김채은
+  type: alumni
+  year: 2022
+  affiliation: Ph.D. student at UC Santa Cruz
+
+- name:
+    en: SangHong Kim
+    ko: 김상홍
+  type: alumni
+  grad: 2023
+  affiliation: Hana Bank
+
+- name:
+    en: HyunSeok Park
+    ko: 박현석
+  type: alumni
+  grad: 2024
+  affiliation: HDC Labs
+  github: https://github.com/gustjr7879
+  instagram: https://www.instagram.com/hyunskki/
+
+- name:
+    en: Ismail Abdulhakin
+    ko: 이스마일 압둘하킨
+  type: alumni
+  grad: 2024
+  affiliation: 
+  github: https://github.com/iamismaill
+  linkedin: https://www.linkedin.com/in/abdulhakin-m-ismail-2715b0151/
+
+
+- name:
+    en: ChangHun Han
+    ko: 한창훈
+  type: alumni
+  grad: 2025
+  affiliation: Grepp
+  github: https://github.com/codingnoye
+  
+- name:
+    en: MinHyoung Kim
+    ko: 김민형
+  type: alumni
+  grad: 2025
+  affiliation: 
+  github: https://github.com/kyun2024
+  
+- name:
+    en: SuJi Kim
+    ko: 김수지 
+  type: alumni
+  affiliation: 
+  github: https://github.com/suji2924
+  
+- name:
+    en: YoungJun Lee
+    ko: 이영준
+  type: alumni
+  affiliation:
+  github: https://github.com/YJJonatanLee
+  
+- name:
+    en: JiSoo Kang
+    ko: 강지수
+  type: alumni
+  affiliation:
+  github: https://github.com/kjsoo-1010
+
+- name:
+    en: JeongHyun Yoo
+    ko: 유정현
+  type: alumni
+
+- name:
+    en: TaeJung Heo
+    ko: 허태정
+  type: alumni
+
+- name:
+    en: IkHyun Jo
+    ko: 조익현
+  type: alumni
+
+- name:
+    en: TaeYoung Kim
+    ko: 김태영
+  type: alumni
+
+- name:
+    en: YongUk Song
+    ko: 송용욱
+  type: alumni
+
+- name: 
+    en: Jaeo Cho
+    ko: 조재오
+  type: alumni
+  affiliation: KB Kookmin Bank
+
+- name: 
+    en: SoJung Lee
+    ko: 이소정
+  type: alumni
+  email: prikey7@kookmin.ac.kr
+  github: https://github.com/grapefruit224
+
+- name: 
+    en: YuJin Kim
+    ko: 김유진
+  type: alumni
+  affiliation: LIG Nex1
+
+- name:
+    en: HyeSung Kim
+    ko: 김혜성
+  type: alumni
+
+- name:
+    en: SungHoon Choe
+    ko: 최성훈
+  type: alumni
+
+- name:
+    en: YoungRak Choi
+    ko: 최영락
+  type: alumni
+
+- name:
+    en: SeWon Hong
+    ko: 홍세원
+  type: alumni
+
+- name:
+    en: SeongHo Kim
+    ko: 김성호
+  type: alumni
+
+- name:
+    en: HaWoon Kang
+    ko: 강하운
+  type: alumni
+
+- name:
+    en: GaHyun Lee
+    ko: 이가현
+  type: alumni

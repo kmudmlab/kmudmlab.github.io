@@ -1,0 +1,39 @@
+/* start custom scss snippet */
+.pub_title{
+  font-size: 1.2rem;
+  font-weight:500;
+  line-height: 1.5rem;
+}
+.pub_subtitle{
+  font-weight:400;
+  line-height: 1.2rem;
+}
+
+.pub_authors{
+  font-size: 1rem;
+  line-height: 1.3rem;
+  margin-top:0.2rem;
+}
+.pub_venue>a, .pub_links>a{
+  font-weight:500;
+}
+.pub_button{
+  display:inline-block;
+  background-color:$green;
+  color:white;
+  padding:0rem 0.6rem;
+  border-radius:0.3rem;
+  font-size:0.9rem;
+  font-weight:600;
+  margin-right:0.5rem;
+}
+.pub_button.pub_button-intconf{
+  background-color:$blue;
+}
+.pub_button.pub_button-intjour{
+  background-color:$green;
+}
+.pub_button.pub_button-patent{
+  background-color:$yellow;
+}
+/* end custom scss snippet */
