@@ -1,0 +1,1528 @@
+<!DOCTYPE html><html lang="en">
+  <head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Publications - Data Mining Lab. @ KMU</title>
+
+<meta name="description" content="Your Site Description
+">
+<link rel="canonical" href="/publications/"><link rel="alternate" type="application/rss+xml" title="Data Mining Lab. @ KMU" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet --><link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css" ><!-- start custom head snippets -->
+
+<!-- end custom head snippets -->
+<script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.6',
+      sources: {
+        font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css',
+        jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script>
+</head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="150.42999mm"
+   height="150.42999mm"
+   viewBox="0 0 150.43 150.43"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="그리기.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="465.27626"
+     inkscape:cy="132.22897"
+     inkscape:window-width="2048"
+     inkscape:window-height="1050"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer3" /><defs
+     id="defs1" /><g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     transform="translate(-44.527107,-69.202837)"><circle
+       style="fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       id="path2"
+       cx="120.11092"
+       cy="144.40239"
+       r="71.093689" /></g><g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3"
+     transform="translate(-44.527107,-69.202837)"><path
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 94.889635,126.82493 c 0,0 -11.17911,-15.79393 -14.58128,-33.350797 -3.76199,-19.41369 12.03432,-34.904322 23.423105,-9.61743 6.43421,14.28605 6.59077,24.589577 7.44577,35.212237 0,0 3.87799,-0.93072 9.3072,-1.08584 5.4292,-0.15512 8.37647,1.55119 8.37647,1.55119 0,0 1.70633,-24.819207 7.756,-36.608307 6.04968,-11.78912 15.07614,-13.83739 19.07976,-10.0828 1.59881,1.49937 8.3369,11.13189 2.17168,29.317677 -5.83573,17.2139 -13.1852,24.97431 -13.1852,24.97431 0,0 20.87439,18.5377 16.28759,40.79656 -3.4433,16.70966 -24.81918,20.1656 -24.81918,20.1656 0,0 8.99696,8.99696 7.75599,13.18519 -1.24096,4.18825 -5.89455,3.72288 -5.89455,3.72288 0,0 0.62048,9.61744 -7.44576,11.634 -8.06625,2.01657 -15.35688,2.17168 -22.18216,-0.62048 -6.82529,-2.79216 -6.04969,-10.70327 -6.04969,-10.70327 0,0 -7.722215,-0.45603 -5.894555,-6.51504 1.48517,-4.92354 7.135515,-10.54816 7.135515,-10.54816 0,0 -24.413795,-3.85837 -24.974305,-25.90504 -0.46536,-18.30416 16.2876,-35.52248 16.2876,-35.52248 z"
+       id="path1-9"
+       sodipodi:nodetypes="csscscssscscscsscscsc" /></g><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:none"
+     transform="translate(-44.527107,-69.202837)"><path
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.31024"
+       d="m 90.399505,126.82493 c 0,0 -11.179105,-15.79393 -14.581279,-33.350791 -3.761992,-19.413698 12.034321,-34.904327 23.423111,-9.617437 6.434203,14.286057 6.590763,24.589578 7.445763,35.212238 0,0 3.87799,-0.93072 9.3072,-1.08584 5.4292,-0.15512 8.37647,1.55119 8.37647,1.55119 0,0 1.70633,-24.819201 7.756,-36.608308 6.04968,-11.789114 15.07614,-13.837386 19.07976,-10.082793 1.59881,1.49937 8.3369,11.131883 2.17168,29.317671 -5.83573,17.2139 -13.1852,24.97431 -13.1852,24.97431 0,0 20.87439,18.5377 16.28759,40.79656 -3.4433,16.70966 -24.81918,20.1656 -24.81918,20.1656 0,0 8.99696,8.99696 7.75599,13.18519 -1.24096,4.18825 -5.89455,3.72288 -5.89455,3.72288 0,0 0.62048,9.61744 -7.44576,11.634 -8.06625,2.01657 -15.35688,2.17168 -22.18216,-0.62048 -6.825281,-2.79216 -6.049679,-10.70327 -6.049679,-10.70327 0,0 -7.722224,-0.45603 -5.894557,-6.51504 1.485161,-4.92354 7.135513,-10.54816 7.135513,-10.54816 0,0 -24.413801,-3.85837 -24.97431,-25.90504 -0.46536,-18.30416 16.287598,-35.52248 16.287598,-35.52248 z"
+       id="path1"
+       sodipodi:nodetypes="csscscssscscscsscscsc" /></g></svg>
+<a title="Your Site Description
+" href="/">Data Mining Lab. @ KMU</a></div></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/">Home</a></li><li class="navigation__item"><a href="/members/">Members</a></li><li class="navigation__item navigation__item--active"><a href="/publications/">Publications</a></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet -->
+<article itemscope itemtype="http://schema.org/Article"><header style="display:none;"><h1>Publications</h1></header><meta itemprop="headline" content="Publications"><meta itemprop="author" content="dmlab"/><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><h2 id="international-papers">International Papers</h2>
+
+<div class="pub_item">
+  <div class="pub_title">SkySearch: Satellite Video Search at Scale</div>
+  <div class="pub_authors">Minyoung Choe, Geon Lee, Changhun Han, Suji Kim, Woong Hu, Hyebeen Hwang, Geunseok Park, Byeongyeon Kim, Hyesook Lee, Ha-Myung Park, and Kijung Shin</div>
+  <div class="pub_venue">
+  
+  <a href="https://kdd2025.kdd.org/">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD) 2025</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://dl.acm.org/doi/pdf/10.1145/3711896.3737263" target="_blank" rel="noopener noreferrer">Paper</a> | 
+    <a href="https://github.com/geon0325/skysearch" target="_blank" rel="noopener noreferrer">Github</a> | 
+    <a href="http://dmlab.kaist.ac.kr/~kijungs/skysearchKDD2025.pdf" target="_blank" rel="noopener noreferrer">Slides</a> | 
+    <a href="http://dmlab.kaist.ac.kr/~kijungs/posters/skysearchKDD2025.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">BTS: Load-Balanced Distributed Union-Find for Finding Connected Components with Balanced Tree Structures</div>
+  <div class="pub_authors">Chaeeun Kim, Changhun Han, and Ha-Myung Park</div>
+  <div class="pub_venue">
+  
+  <a href="https://icde2024.github.io/">IEEE International Conference on Data Engineering (ICDE) 2024</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://kmudmlab.github.io/assets/papers/ICDE24_cekim.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">Efficient Proximity Search in Time-evolving High-dimensional Data using Multi-level Block Indexing</div>
+  <div class="pub_authors">Changhun Han, Suji Kim, and Ha-Myung Park</div>
+  <div class="pub_venue">
+  
+  <a href="https://dastlab.github.io/edbticdt2024/">International Conference on Extending Database Technology (EDBT) 2024</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://kmudmlab.github.io/assets/papers/edbt2024_noye.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">Enhancing Heterophilic Graph Neural Network Performance through Label Propagation in K-Nearest Neighbor Graphs</div>
+  <div class="pub_authors">HyunSeok Park and Ha-Myung Park</div>
+  <div class="pub_venue">
+  
+  <a>IEEE International Conference on Big Data and Smart Computing (BigComp) 2024</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://kmudmlab.github.io/assets/papers/bigcomp24_hspark.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">Latent Representation Generation for Efficient Content-Based Image Retrieval in Weather Satellite Images Using Self-Supervised Segmentation (poster)</div>
+  <div class="pub_authors">Ismail Abdulhakin and Ha-Myung Park</div>
+  <div class="pub_venue">
+  
+  <a>IEEE International Conference on Big Data and Smart Computing (BigComp) 2024</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://kmudmlab.github.io/assets/papers/bigcomp24_ismail.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">Efficient Distributed Approximate k-Nearest Neighbor Graph Construction by Multiway Random Division Forest</div>
+  <div class="pub_authors">Sanghong Kim and Ha-Myung Park</div>
+  <div class="pub_venue">
+  
+  <a href="https://kdd.org/kdd2023/index.html">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD) 2023</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://dl.acm.org/doi/abs/10.1145/3580305.3599327" target="_blank" rel="noopener noreferrer">Paper</a> | 
+    <a href="https://github.com/MRDF2023/MRDF" target="_blank" rel="noopener noreferrer">Github</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">UniCon: A Unified Star-Operation to Efficiently Find Connected Components on a Cluster of Commodity Hardware</div>
+  <div class="pub_authors">Chaeeun Kim, Changhun Han, and Ha-Myung Park</div>
+  <div class="pub_venue">
+  
+  <a href="https://journals.plos.org/plosone/">PLOS ONE 2022</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intjour">Journal</span>
+  
+  [ 
+  
+    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0277527" target="_blank" rel="noopener noreferrer">Paper</a> | 
+    <a href="https://github.com/UniCon2021/UniCon" target="_blank" rel="noopener noreferrer">Github</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">Accurate Relational Reasoning in Edge-labeled Graphs by Multi-Labeled Random Walk with Restart</div>
+  <div class="pub_authors">Jinhong Jung, Woojeong Jin, Ha-Myung Park, and U Kang</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.springer.com/journal/11280">World Wide Web Journal (WWWJ) 2020</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intjour">Journal</span>
+  
+  [ 
+  
+    <a href="https://datalab.snu.ac.kr/~ukang/papers/lrwrWWWJ20.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">PACC: Large Scale Connected Component Computation on Hadoop and Spark</div>
+  <div class="pub_authors">Ha-Myung Park, Namyong Park, Sung-Hyon Myaeng, and U Kang</div>
+  <div class="pub_venue">
+  
+  <a href="https://journals.plos.org/plosone/">PLOS ONE 2020</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intjour">Journal</span>
+  
+  [ 
+  
+    <a href="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0229936&amp;type=printable" target="_blank" rel="noopener noreferrer">Paper</a> | 
+    <a href="https://github.com/kmudmlab/PACC" target="_blank" rel="noopener noreferrer">Github</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">FlexGraph: flexible partitioning and storage for scalable graph mining</div>
+  <div class="pub_authors">Chiwan Park, Ha-Myung Park, and U Kang</div>
+  <div class="pub_venue">
+  
+  <a href="https://journals.plos.org/plosone/">PLOS ONE 2020</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intjour">Journal</span>
+  
+  [ 
+  
+    <a href="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0227032&amp;type=printable" target="_blank" rel="noopener noreferrer">Paper</a> | 
+    <a href="https://github.com/snudatalab/FlexGraph/" target="_blank" rel="noopener noreferrer">Github</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">BalanSiNG: Fast and Scalable Generation of Realistic Signed Networks</div>
+  <div class="pub_authors">Jinhong Jung, Ha-Myung Park, and U Kang</div>
+  <div class="pub_venue">
+  
+  <a href="https://diku-dk.github.io/edbticdt2020/">International Conference on Extending Database Technology (EDBT) 2020</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://datalab.snu.ac.kr/balansing/resources/balansingEDBT20.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">Enumerating Trillion Subgraphs On Distributed Systems</div>
+  <div class="pub_authors">Ha-Myung Park, Francesco Silvestri, Rasmus Pagh, Chin-wan Chung, Sung-Hyon Myaeng, and U Kang</div>
+  <div class="pub_venue">
+  
+  <a href="https://dl.acm.org/journal/tkdd">ACM Transactions on Knowledge Discovery from Data (TKDD) 2018</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intjour">Journal</span>
+  
+  [ 
+  
+    <a href="https://datalab.snu.ac.kr/~ukang/papers/pseTKDD18.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">PegasusN: A Scalable and Versatile Graph Mining System (Demo)</div>
+  <div class="pub_authors">Ha-Myung Park, Chiwan Park, and U Kang</div>
+  <div class="pub_venue">
+  
+  <a href="https://aaai.org/Conferences/AAAI-18/">AAAI Conference on Artificial Intelligence (AAAI) 2018</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intjour">Journal</span>
+  
+  [ 
+  
+    <a href="https://datalab.snu.ac.kr/~ukang/papers/pegasusnAAAI18.pdf" target="_blank" rel="noopener noreferrer">Paper</a> | 
+    <a href="https://datalab.snu.ac.kr/pegasusn/" target="_blank" rel="noopener noreferrer">Homepage</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">A New Question Answering Approach with Conceptual Graphs</div>
+  <div class="pub_authors">Kyung-Min Kim, Jinhong Jung, Jihee Ryu, Ha-Myung Park, Joseph P.Joohee, Seokwoo Jeong, U Kang, and Sung-Hyon Myaeng</div>
+  <div class="pub_venue">
+  
+  <a>Conférence en Recherche d’Information et Applications (CORIA) 2017</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://datalab.snu.ac.kr/~ukang/papers/qaCORIA17.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">Partition Aware Connected Component Computation in Distributed Systems</div>
+  <div class="pub_authors">Ha-Myung Park, Namyong Park, Sung-Hyon Myaeng, and U Kang</div>
+  <div class="pub_venue">
+  
+  <a href="https://icdm2016.eurecat.cat/">IEEE International Conference on Data Mining (ICDM) 2016</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://datalab.snu.ac.kr/~hmpark/papers/icdm2016_pacc.pdf" target="_blank" rel="noopener noreferrer">Paper</a> | 
+    <a href="http://datalab.snu.ac.kr/pacc/" target="_blank" rel="noopener noreferrer">Homepage</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">PTE: Enumerating Trillion Triangles On Distributed Systems</div>
+  <div class="pub_authors">Ha-Myung Park, Sung-Hyon Myaeng, and U Kang</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.kdd.org/kdd2016/">ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD) 2016</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://datalab.snu.ac.kr/~hmpark/papers/pteKDD2016.pdf" target="_blank" rel="noopener noreferrer">Paper</a> | 
+    <a href="http://datalab.snu.ac.kr/pte/" target="_blank" rel="noopener noreferrer">Homepage</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">The Direction-Constrained k Nearest Neighbor Query: Dealing With Spatio-Directional Objects</div>
+  <div class="pub_authors">Min Joong Lee, Dong Wan Choi, Sangyon Kim, Ha-Myung Park, Sunghee Choi, and Chin-Wan Chung</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.springer.com/journal/10707">Geoinformatica 2016</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intjour">Journal</span>
+  
+  [ 
+  
+    <a href="http://islab.kaist.ac.kr/dknn.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">MapReduce Triangle Enumeration With Guarantees</div>
+  <div class="pub_authors">Ha-Myung Park, Francesco Silvestri, U Kang, and Rasmus Pagh</div>
+  <div class="pub_venue">
+  
+  <a>ACM International Conference on Information and Knowledge Management (CIKM) 2014</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="http://datalab.snu.ac.kr/~ukang/papers/cttpCIKM2014.pdf" target="_blank" rel="noopener noreferrer">Paper</a> | 
+    <a href="http://datalab.snu.ac.kr/cttp" target="_blank" rel="noopener noreferrer">Homepage</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">An Efficient MapReduce Algorithm for Counting Triangles in a Very Large graph</div>
+  <div class="pub_authors">Ha-Myung Park and Chin-Wan Chung</div>
+  <div class="pub_venue">
+  
+  <a href="http://www.cikm2013.org/">ACM International Conference on Information and Knowledge Management (CIKM) 2013</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [ 
+  
+    <a href="https://datalab.snu.ac.kr/~hmpark/papers/p539-park.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<h2 id="domestic-papers">Domestic Papers</h2>
+
+<div class="pub_item">
+  <div class="pub_title">위성사진 유사사례 검색을 위한 시계열 특성 반영 임베딩 모델 파인튜닝 기법</div>
+  <div class="pub_authors">강하운, 김윤희, 배세은, 이가현, 홍세원, 박하명</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.kiise.or.kr/conference/kcc/2025/">한국소프트웨어종합학술대회 (KCC) 2025</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [
+  <a href="/assets/papers/ksc2025_time_series.pdf" target="_blank" rel="noopener noreferrer">Paper</a> | <a href="/assets/papers/ksc2025_time_series_poster.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
+  ]
+  
+  <span class="pub_award">
+  <i class="fas fa-award"></i> 학부생부분 장려상
+  </span>
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">멀티모달 임베딩 정렬 기반 자연어-위성사진 유사 사례 검색</div>
+  <div class="pub_authors">강하운, 김윤희, 배세은, 이가현, 홍세원, 박하명</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.kiise.or.kr/conference/kcc/2025/">한국소프트웨어종합학술대회 (KCC) 2025</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [
+  <a href="/assets/papers/ksc2025_multimodal.pdf" target="_blank" rel="noopener noreferrer">Paper</a> | <a href="/assets/papers/ksc2025_multimodal_poster.pdf" target="_blank" rel="noopener noreferrer">Poster</a>
+  ]
+  
+  <span class="pub_award">
+  <i class="fas fa-award"></i> 학부생부분 우수상
+  </span>
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">k-코어 기반 그래프 증강 기법</div>
+  <div class="pub_authors">박현석, 김수지, 박하명</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.kiise.or.kr/conference/KSC/2023/">한국소프트웨어종합학술대회 (KSC) 2023</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [
+  <a href="/assets/papers/ksc2023_kcore.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">KcBERT 언어 모델을 사용한 뉴스 기사 혐오 댓글 분류</div>
+  <div class="pub_authors">강지수, 박하명, 강승식</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.kiise.or.kr/conference/KSC/2023/">한국소프트웨어종합학술대회 (KSC) 2023</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [
+  <a href="/assets/papers/ksc2023_kcbert.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">KcELECTRA 를 활용한 혐오성 댓글 분류</div>
+  <div class="pub_authors">이영준, 박하명, 강승식</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.kiise.or.kr/conference/KSC/2023/">한국소프트웨어종합학술대회 (KSC) 2023</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [
+  <a href="/assets/papers/ksc2023_kcelectra.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">기상관측정보를 고려한 오토인코더 기반 멀티모달 기상위성영상 임베딩 기법 연구</div>
+  <div class="pub_authors">김유진, 이소정, 박하명</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.kiise.or.kr/conference/KSC/2022/">한국소프트웨어종합학술대회 (KSC) 2022</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [
+  <a href="/assets/papers/ksc2022_multimodal.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">맵리듀스 환경에서 프로덕트 양자화</div>
+  <div class="pub_authors">조재오, 박하명</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.kiise.or.kr/conference/KSC/2022/">한국소프트웨어종합학술대회 (KSC) 2022</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [
+  <a href="/assets/papers/ksc2022_pq.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">그래프 사전 분할 기법을 활용한 Butterfly Counting MapReduce 알고리즘</div>
+  <div class="pub_authors">허태정, 이용준, 박하명</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.kiise.or.kr/conference/kcc/2021/">한국컴퓨터종합학술대회 (KCC) 2021</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [
+  <a href="/assets/papers/kcc2021_butterfly.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">너비 우선 탐색(BFS) 기법 기반 국내 유튜브(Youtube) 동영상 정보 크롤링 기법 및 국내 Youtube 데이터셋 구축</div>
+  <div class="pub_authors">김태영, 박하명</div>
+  <div class="pub_venue">
+  
+  <a href="https://www.kiise.or.kr/conference/kcc/2021/">한국컴퓨터종합학술대회 (KCC) 2021</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intconf">Conference</span>
+  
+  [
+  <a href="/assets/papers/kcc2021_youtubecrawler.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">대용량 그래프에서의 삼각형 검색 연구 : 알고리즘과 응용</div>
+  <div class="pub_authors">박하명, 강유</div>
+  <div class="pub_venue">
+  
+  <a>한국통신학회지(정보와통신) 2014</a>
+  
+  </div>
+  <div class="pub_links">
+  
+  <span class="pub_button pub_button-intjour">Journal</span>
+  
+  [
+  <a href="https://www.koreascience.kr/article/JAKO201414753131620.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<h2 id="patents">Patents</h2>
+
+<div class="pub_item">
+  <div class="pub_title">시간 축적 고차원 데이터에서의 효율적인 근접 검색을 위한 다중 레벨 블록 인덱싱</div>
+  <div class="pub_subtitle">Multi-Level Block Indexing for Efficient Proximity Search in Time-Accumulating High-Dimensional Data</div>
+  <div class="pub_authors">박하명, 한창훈, 김수지, 신하얀</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020240041432 (2024.03.26)</span>
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">k-코어를 사용한 그래프 증강 방법</div>
+  <div class="pub_subtitle">A Method for Graph Augmentation Using K-Cores</div>
+  <div class="pub_authors">박하명, 박현석, 김수지, 김병연</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020240046746 (2024.04.05)</span>
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">K-NN 그래프와 라벨 전파를 이용한 이질적 그래프 신경망 성능 강화</div>
+  <div class="pub_subtitle">Heterophilic Graph Neural Network Enhancement using K-NN Graphs and Label Propagation</div>
+  <div class="pub_authors">박하명, 박현석, 김병연</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020240045739 (2024.04.04)</span>
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">기상관측정보를 고려한 오토인코더 기반 멀티모달 기상위성영상 임베딩 기법</div>
+  <div class="pub_subtitle">An AutoEncoder-based multimodal embedding method for meteorological satellite images with weather information</div>
+  <div class="pub_authors">박하명, 김유진, 이소정</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020230023710 (2023.02.22)</span>
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">그래프 랜덤워크 기반 보안관제 이벤트 분석 장치 및 방법</div>
+  <div class="pub_subtitle">SECURITY EVENT ANALYSIS AND VISUALIZATION APPARATUS AND METHOD BASED ON GRAPH RANDOM WALK WITH RESTART</div>
+  <div class="pub_authors">박하명</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020220072765 (2022.06.15)</span><span>, 등록: 1027804170000 (2025.03.07)</span>
+  
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  [
+    <a href="https://doi.org/10.8080/1020220072765" target="_blank" rel="noopener noreferrer">DOI</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">부호화된 네트워크 생성 장치 및 방법</div>
+  <div class="pub_subtitle">APPARATUS AND METHOD FOR GENERATING SIGNED NETWORK</div>
+  <div class="pub_authors">강유, 정진홍, 박하명</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020190146716 (2019.11.15)</span><span>, 등록: 1023210640000 (2021.10.28)</span>
+  
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  [
+    <a href="https://doi.org/10.8080/1020190146716" target="_blank" rel="noopener noreferrer">DOI</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">이기종 클러스터 환경에서 네트워크 통신의 양을 줄이는 그래프 삼각형 열거 방법 및 장치</div>
+  <div class="pub_subtitle">TRIANGLE ENUMERATION METHOD THAT REDUCES NETWORK TRAFFIC ON HETEROGENEOUS CLUSTERS AND APPARATUS THEREOF</div>
+  <div class="pub_authors">강유, 박하명</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020190018142 (2019.02.15)</span><span>, 등록: 1021920480000 (2020.12.10)</span>
+  
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  [
+    <a href="https://doi.org/10.8080/1020190018142" target="_blank" rel="noopener noreferrer">DOI</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">다중 간선 라벨 그래프의 정점들 간 관련도를 측정하는 방법 및 장치</div>
+  <div class="pub_subtitle">METHOD AND APPARATUS FOR MEASURING RELEVANCE BETWEEN NODES OF EDGE-LABELED MULTIGRAPH</div>
+  <div class="pub_authors">강유, 정진홍, 진우정, 박하명</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020180150180 (2018.11.28)</span><span>, 등록: 1021779400000 (2020.11.06)</span>
+  
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  [
+    <a href="https://doi.org/10.8080/1020180150180" target="_blank" rel="noopener noreferrer">DOI</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">사전 그래프 분할 기반 행렬 벡터 곱을 이용한 대규모 그래프 마이닝 방법 및 장치</div>
+  <div class="pub_subtitle">METHOD AND APPARATUS FOR SCALABLE GRAPH MINING USING GRAPH PRE-PARTITIONING</div>
+  <div class="pub_authors">강유, 박치완, 박하명, 윤민지</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020180037373 (2018.03.30)</span><span>, 등록: 1019907350000 (2019.06.12)</span>
+  
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  [
+    <a href="https://doi.org/10.8080/1020180037373" target="_blank" rel="noopener noreferrer">DOI</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">그래프 매칭 방법 및 장치</div>
+  <div class="pub_subtitle">METHOD AND APPARATUS FOR MATCHING GRAPH</div>
+  <div class="pub_authors">서동민, 유석종, 이민호, 강유, 박하명</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020160139185 (2016.10.25)</span><span>, 등록: 1017478540000 (2017.06.09)</span>
+  
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  [
+    <a href="http://doi.org/10.8080/1017478540000" target="_blank" rel="noopener noreferrer">DOI</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+<div class="pub_item">
+  <div class="pub_title">삼각형 열거를 위한 맵 리듀스 방법, 및 그 방법을 이용하는 장치들</div>
+  <div class="pub_subtitle">MAPREDUCE METHOD FOR TRIANGLE ENUMERATION AND APPARATUS THEREOF</div>
+  <div class="pub_authors">강유, 박하명, 파라스무스, 실베스트리프란체스코</div>
+  <div class="pub_patent_status">
+  
+  <span>출원: 1020150020455 (2015.02.10)</span><span>, 등록: 1016693560000 (2016.10.19)</span>
+  
+  </div>
+  <div class="pub_links">
+  <span class="pub_button pub_button-patent">Patent</span>
+  
+  [
+    <a href="https://doi.org/10.8080/1020150020455" target="_blank" rel="noopener noreferrer">DOI</a>
+  ]
+  
+  </div>
+  <div class="mt-4"></div>
+</div>
+
+</div><div class="d-print-none"><footer class="article__footer"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+</div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
+</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div><div class="page__footer d-print-none">
+<footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dmlab"><meta itemprop="url" content="/"><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© Data Mining Lab. @ KMU 2021,
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a
+        title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.
+      </div>
+    </div>
+  </div>
+</footer>
+</div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"></div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>
+
