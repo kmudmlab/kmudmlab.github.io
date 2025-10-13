@@ -4,6 +4,10 @@ header:
     url : / 
 
   - titles:
+      en      : &EN      Research
+    url : /research/
+
+  - titles:
       en      : &EN      Members
     url : /members/
 
