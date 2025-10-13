@@ -1,0 +1,31 @@
+name: Build and Deploy Jekyll Site
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Ruby와 Bundler 설치
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1' # Jekyll 버전에 맞는 Ruby 버전을 명시
+          bundler-cache: true # Gem 의존성 캐싱으로 빌드 속도 향상
+
+      # Jekyll 사이트 빌드 (이 과정에서 jekyll-imagemin이 이미지를 압축!)
+      - name: Build the site
+        run: bundle exec jekyll build
+
+      # 빌드된 사이트를 gh-pages 브랜치에 배포
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site # Jekyll 빌드 결과물이 담긴 폴더
