@@ -27,3 +27,5 @@ _site/
 .jekyll-cache/
 .DS_Store
 .ruby-version
+
+assets/resized/
