@@ -24,7 +24,7 @@ a.a-icon, a.a-icon:link, a.a-icon:visited {
   overflow:hidden;
 }
 
-.member-photo{
+.card__image>img{
   object-fit: cover;
   object-position: center;
   width:100%;
