@@ -234,13 +234,9 @@ responsive_image:
     - width: 480
     - width: 800
 
-  # 생성할 이미지 포맷. 원본(jpg/png)과 함께 webp 포맷도 생성합니다.
-  formats:
-    - webp
-    - original
+  output_path_format: assets/resized/%{filename}-%{width}.webp
 
-  # 이미지 퀄리티 설정 (1-100)
-  quality: 85
+  save_to_source: false
 
   # 모든 이미지에 공통으로 적용될 <img> 태그 속성
   default_attributes:

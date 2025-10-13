@@ -45,14 +45,9 @@ a.a-icon, a.a-icon:link, a.a-icon:visited {
         {% if member.image != nil and member.image != "" %}   
         {% responsive_image_block %}
           path: assets/images/members/{{member.image}}
-          class: 'member-photo'
         {% endresponsive_image_block %}   
-        
         {% else %}
-        {% responsive_image_block %}
-          path: assets/images/members/unknown.jpg
-          class: 'member-photo'
-        {% endresponsive_image_block %}   
+        <img src="/assets/images/members/unknown.gif">
         {% endif %}
       </div>
       {% endif %}
