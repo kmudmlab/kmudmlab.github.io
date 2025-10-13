@@ -23,11 +23,18 @@ a.a-icon, a.a-icon:link, a.a-icon:visited {
   border-top-right-radius: 0.4rem;
   overflow:hidden;
 }
+
+.member-photo{
+  object-fit: cover;
+  object-position: center;
+  width:100%;
+  height:200px;
+}
 </style>
 
 {% for mt in site.data.membertypes %}
 ## {{mt.label}}
-
+ 
 <div class="article-list grid grid--sm grid--p-3">
   {% for member in site.data.members %}
   {% if member.type == mt.type %}
@@ -35,10 +42,17 @@ a.a-icon, a.a-icon:link, a.a-icon:visited {
     <div class="card">
       {% if mt.noimage != true %}
       <div class="card__image">
-        {% if member.image != nil and member.image != "" %}
-        <div style="width:100%; height: 200px; background-image:url(/assets/images/members/{{member.image}}); background-size:cover; background-position:center center;"></div>
+        {% if member.image != nil and member.image != "" %}   
+        {% responsive_image_block %}
+          path: assets/images/members/{{member.image}}
+          class: 'member-photo'
+        {% endresponsive_image_block %}   
+        
         {% else %}
-        <div style="width:100%; height: 200px; background-image:url(/assets/images/members/unknown.jpg); background-size:cover; background-position:center center;"></div>
+        {% responsive_image_block %}
+          path: assets/images/members/unknown.jpg
+          class: 'member-photo'
+        {% endresponsive_image_block %}   
         {% endif %}
       </div>
       {% endif %}

@@ -223,3 +223,25 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jemoji
+  - jekyll-responsive-image
+
+
+# Responsive Image 플러그인 설정
+responsive_image:
+  template: _includes/srcset-resized-fallback.html
+  sizes:
+    - width: 320
+    - width: 480
+    - width: 800
+
+  # 생성할 이미지 포맷. 원본(jpg/png)과 함께 webp 포맷도 생성합니다.
+  formats:
+    - webp
+    - original
+
+  # 이미지 퀄리티 설정 (1-100)
+  quality: 85
+
+  # 모든 이미지에 공통으로 적용될 <img> 태그 속성
+  default_attributes:
+    loading: lazy # 모든 이미지에 지연 로딩 기본 적용
