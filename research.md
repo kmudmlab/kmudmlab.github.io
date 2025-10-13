@@ -9,6 +9,14 @@ key: research
 show_title: false
 ---
 
+<style>
+.img_center{
+  max-width:400px !important;
+  display:block;
+  width:100%;
+  margin:0 auto;
+}
+</style>
 
 ## Our Vision
 
@@ -24,13 +32,7 @@ show_title: false
 
 궁극적으로, 우리의 연구는 데이터가 존재하는 모든 곳에서 그 가치가 막힘없이 흐를 수 있도록 하는 기술적 토대를 마련하는 것을 목표로 합니다. 우리의 알고리즘이 현실 세계의 복잡한 문제를 해결하고, 새로운 가능성을 여는 핵심 동력이 될 것이라 믿습니다.
 
-<!-- 데이터가 세상의 중심이 된 시대, 그 안에 숨겨진 가치는 무한하지만 **데이터의 규모와 복잡성**은 이를 활용하는 데 큰 장벽이 되고 있습니다.
-
-우리 연구실은 **데이터 마이닝, 기계 학습, 정보 검색** 등의 기술을 활용하여 대규모 데이터를 효율적으로 처리하고 분석할 수 있는 확장 가능한 알고리즘을 연구 및 개발합니다.
-특히, 모델 압축, 표현 학습 등을 통해 복잡한 데이터를 효과적으로 학습시키는 **Efficient Machine Learning** 분야와 분산/병렬 시스템이나 엣지 디바이스와 같은 제약된 환경에서 대규모 데이터를 빠르게 처리하는 **Large-scale Data Mining** 분야에 집중합니다.
-
-우리의 목표는 단순히 빠른 알고리즘을 넘어, 하드웨어와 같은 물리적 제약 없이 누구나 데이터의 잠재력을 최대로 이끌어내는 기술적 토대를 마련하는 것입니다.
-이를 통해 현실 세계의 복잡한 문제 해결에 기여하고 데이터 기반 혁신을 선도하고자 합니다. -->
+{% responsive_image path: assets/images/research/research_main.png class: "img_center" %}
 
 
 ## Research Interests
