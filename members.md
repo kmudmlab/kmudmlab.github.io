@@ -31,7 +31,7 @@ a.a-icon, a.a-icon:link, a.a-icon:visited {
 <div class="article-list grid grid--sm grid--p-3">
   {% for member in site.data.members %}
   {% if member.type == mt.type %}
-  <div class="cell cell--4 cell--md-4 cell--lg-3">
+  <div class="cell cell--6 cell--md-4 cell--lg-3">
     <div class="card">
       {% if mt.noimage != true %}
       <div class="card__image">

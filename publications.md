@@ -47,6 +47,11 @@ show_title: false
     {%- unless forloop.last %} | {% endunless -%}
   {% endfor %}
   ]
+  {% if item.award != nil %}
+  <span class="pub_award">
+  <i class="fas fa-award"></i> {{item.award}}
+  </span>
+  {% endif %}
   </div>
   <div class="mt-4"></div>
 </div>
@@ -86,6 +91,11 @@ show_title: false
     {%- endif -%}
   {% endfor %}
   ]
+  {% if item.award != nil %}
+  <span class="pub_award">
+  <i class="fas fa-award"></i> {{item.award}}
+  </span>
+  {% endif %}
   </div>
   <div class="mt-4"></div>
 </div>
