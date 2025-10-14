@@ -10,8 +10,9 @@ show_title: false
 ---
 
 <div class="mt-4"></div>
-<iframe src="https://www.sigmajs.org/demo/index.html" style="width:100%; height: 50rem; border:0"> </iframe>
-
+<div class="iframe-wrapper">
+<iframe src="https://www.sigmajs.org/demo/index.html" class="home_graph"> </iframe>
+</div>
 
 ## Data Mining Lab. @ Kookmin Univ.
 
