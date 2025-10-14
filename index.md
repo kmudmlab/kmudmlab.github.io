@@ -9,6 +9,9 @@ key: home
 show_title: false
 ---
 
+<div class="mt-4"></div>
+<iframe src="https://www.sigmajs.org/demo/index.html" style="width:100%; height: 50rem; border:0"> </iframe>
+
 
 ## Data Mining Lab. @ Kookmin Univ.
 
