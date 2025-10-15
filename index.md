@@ -49,8 +49,8 @@ show_title: false
     attributes.color = clusterColors[attributes.cluster] || '#ccc'; // 클러스터가 없는 경우 회색으로 처리
 
     attributes.size = attributes.score * 300 + 2;
-    attributes.x = Math.random();
-    attributes.y = Math.random();
+    attributes.x += Math.random()*500;
+    attributes.y += Math.random()*500;
     graph.addNode(key, attributes);
   });
 
@@ -60,18 +60,47 @@ show_title: false
 
   const settings = graphologyLibrary.layoutForceAtlas2.inferSettings(graph);
   
-  // 애니메이션을 위해 주석 처리된 코드를 활성화 합니다.
-  function step() {
-    graphologyLibrary.layoutForceAtlas2.assign(graph, { settings, iterations: 1 });
-    requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
+  // 애니메이션 상태를 관리할 변수들
+  let layoutAnimationId = null;
+  let layoutTimeoutId = null;
 
-  // Instantiate sigma.js and render the graph
+  // 레이아웃 애니메이션을 시작하는 함수
+  function startLayoutAnimation() {
+    // 기존 애니메이션이 있다면 중복 실행 방지
+    if (layoutAnimationId) {
+      cancelAnimationFrame(layoutAnimationId);
+    }
+    // 기존 중지 타이머가 있다면 취소
+    if (layoutTimeoutId) {
+      clearTimeout(layoutTimeoutId);
+      layoutTimeoutId = null;
+    }
+    
+    function step() {
+      graphologyLibrary.layoutForceAtlas2.assign(graph, { settings, iterations: 1 });
+      layoutAnimationId = requestAnimationFrame(step);
+    }
+    step();
+  }
+
+  // 레이아웃 애니메이션을 중지하는 함수
+  function stopLayoutAnimation() {
+    if (layoutAnimationId) {
+      cancelAnimationFrame(layoutAnimationId);
+      layoutAnimationId = null;
+    }
+  }
+  
+  // 페이지 로드 시 초기 레이아웃 실행
+  startLayoutAnimation();
+  // 5초 후에 자동으로 중지
+  layoutTimeoutId = setTimeout(stopLayoutAnimation, 5000);
+
+
+  // Sigma 인스턴스 생성
   const s = new Sigma(graph, document.getElementById("container"));
 
-  // --- 이하 드래그 관련 코드는 그대로 유지 ---
-
+  // --- 드래그 이벤트 핸들러 수정 ---
   let draggedNode = null;
   let isDragging = false;
 
@@ -80,18 +109,16 @@ show_title: false
     draggedNode = e.node;
     graph.setNodeAttribute(draggedNode, "highlighted", true);
     if (!s.getCustomBBox()) s.setCustomBBox(s.getBBox());
+
+    // [수정] 노드를 잡으면 레이아웃 애니메이션을 다시 시작
+    startLayoutAnimation();
   });
 
   s.on("moveBody", ({ event }) => {
     if (!isDragging || !draggedNode) return;
-
-    // Get new position of node
     const pos = s.viewportToGraph(event);
-
     graph.setNodeAttribute(draggedNode, "x", pos.x);
     graph.setNodeAttribute(draggedNode, "y", pos.y);
-
-    // Prevent sigma to move camera:
     event.preventSigmaDefault();
     event.original.preventDefault();
     event.original.stopPropagation();
@@ -103,6 +130,9 @@ show_title: false
     }
     isDragging = false;
     draggedNode = null;
+
+    if (layoutTimeoutId) clearTimeout(layoutTimeoutId);
+    layoutTimeoutId = setTimeout(stopLayoutAnimation, 2500);
   };
   s.on("upNode", handleUp);
   s.on("upStage", handleUp);
