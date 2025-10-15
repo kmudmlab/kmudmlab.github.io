@@ -48,7 +48,7 @@ show_title: false
     // 해당 클러스터의 색상을 노드의 color 속성에 지정합니다.
     attributes.color = clusterColors[attributes.cluster] || '#ccc'; // 클러스터가 없는 경우 회색으로 처리
 
-    attributes.size = attributes.score * 300 + 2;
+    attributes.size = attributes.score * 200 + 2;
     attributes.x += Math.random()*500;
     attributes.y += Math.random()*500;
     graph.addNode(key, attributes);
@@ -94,11 +94,20 @@ show_title: false
   // 페이지 로드 시 초기 레이아웃 실행
   startLayoutAnimation();
   // 5초 후에 자동으로 중지
-  layoutTimeoutId = setTimeout(stopLayoutAnimation, 5000);
+  layoutTimeoutId = setTimeout(stopLayoutAnimation, 3000);
 
 
   // Sigma 인스턴스 생성
-  const s = new Sigma(graph, document.getElementById("container"));
+  const s = new Sigma(graph, document.getElementById("container"), {
+  });
+
+  s.setSetting("renderHighlightedNodesLabels", true);
+
+  s.setSetting("nodeReducer", (node, data) => {
+    const res = { ...data };
+    if (node === "data mining") res.highlighted = true;
+    return res;
+  });
 
   // --- 드래그 이벤트 핸들러 수정 ---
   let draggedNode = null;
@@ -110,7 +119,6 @@ show_title: false
     graph.setNodeAttribute(draggedNode, "highlighted", true);
     if (!s.getCustomBBox()) s.setCustomBBox(s.getBBox());
 
-    // [수정] 노드를 잡으면 레이아웃 애니메이션을 다시 시작
     startLayoutAnimation();
   });
 
@@ -137,6 +145,11 @@ show_title: false
   s.on("upNode", handleUp);
   s.on("upStage", handleUp);
 
+  const dm_node = graph.getNodeAttributes("data mining")
+
+
+  const camera = s.getCamera();
+  camera.animate({ ratio: 0.1, x: 0.43, y: 0.58 }, { duration: 3000 });
 </script>
 
 ## Data Mining Lab. @ Kookmin Univ.
