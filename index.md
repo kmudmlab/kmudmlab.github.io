@@ -49,8 +49,8 @@ show_title: false
     attributes.color = clusterColors[attributes.cluster] || '#ccc'; // 클러스터가 없는 경우 회색으로 처리
 
     attributes.size = attributes.score * 200 + 2;
-    attributes.x += Math.random()*500;
-    attributes.y += Math.random()*500;
+    //attributes.x += Math.random()*500;
+    //attributes.y += Math.random()*500;
     graph.addNode(key, attributes);
   });
 
@@ -92,9 +92,9 @@ show_title: false
   }
   
   // 페이지 로드 시 초기 레이아웃 실행
-  startLayoutAnimation();
+  //startLayoutAnimation();
   // 5초 후에 자동으로 중지
-  layoutTimeoutId = setTimeout(stopLayoutAnimation, 3000);
+  //layoutTimeoutId = setTimeout(stopLayoutAnimation, 3000);
 
 
   // Sigma 인스턴스 생성
