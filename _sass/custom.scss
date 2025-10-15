@@ -1,35 +1,13 @@
 /* start custom scss snippet */
 
-.iframe-wrapper {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+.home_graph{
+  width:100%;
+  aspect-ratio: 5 / 4;
+  border:none;
   border-radius:0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.iframe-wrapper .home_graph {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 150%;
-  height: 150%;
-
-  transform: scale(0.67);
-  transform-origin: top left;
-
-  border: 0;
-}
-
-// .home_graph{
-//   width:100%;
-//   aspect-ratio: 16 / 9;
-//   border:none;
-//   border-radius:0.5rem;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-// }
 
 .pub_title{
   font-size: 1.2rem;
