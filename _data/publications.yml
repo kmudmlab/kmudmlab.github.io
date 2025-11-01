@@ -212,7 +212,7 @@
     - Sung-Hyon Myaeng
     - U Kang
   links:
-    paper: https://datalab.snu.ac.kr/~hmpark/papers/icdm2016_pacc.pdf
+    paper: "/assets/papers/icdm2016_pacc.pdf"
     homepage: http://datalab.snu.ac.kr/pacc/
 
 - type: international_conference
