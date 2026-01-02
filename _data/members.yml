@@ -11,50 +11,30 @@
   youtube: https://www.youtube.com/@kmuhmpark
 
 - name:
-    en: KiYeon Park
-    ko: 박기연
-  type: grad
-  image: kiyeon-park.jpg
-  email: willam1017@kookmin.ac.kr
-  homepage: 
-  github: https://github.com/MargielaParis
-
-- name:
-    en: Woosung Cho
-    ko: 조우성
-  type: grad
-  image: 
-  email: chowoos@kookmin.ac.kr
-  homepage: 
-  github:
-
-
-- name:
     en: ChaeWon Jeong
     ko: 정채원
-  type: under
+  type: grad
   image: cwjeong.jpg
   email: chloe3205@kookmin.ac.kr
   homepage:
   github:
 
 - name:
-    en: GyeongRin Baek
-    ko: 백경린
-  type: under
-  image: gyeongrin-baek.jpg
-  email: back9656@kookmin.ac.kr
-  homepage:
-  github:
-
-- name:
     en: WonCheol Son
     ko: 손원철
-  type: under
+  type: grad
   image: woncheol-son.jpg
   email: sonwon9@kookmin.ac.kr
   homepage:
   github:
+  
+- name:
+    en: YunJun Kim
+    ko: 김윤준
+  type: grad
+  image: yunjun_kim.jpg
+  email: yunjun0914@naver.com
+  youtube: https://www.youtube.com/@%EB%96%A8%EC%96%B4%EC%A7%80%EB%8A%94%EB%84%88%EC%9D%98%EB%AA%A8%EC%8A%B5
 
 - name:
     en: Jung Eun Park
@@ -84,29 +64,10 @@
   github:
 
 - name:
-    en: Ahyoung Cho
-    ko: 조아영
-  type: under
-  image: aycho.jpg
-  email: twnbay@kookmin.ac.kr
-  homepage:
-  github:
-
-- name:
-    en: YunJun Kim
-    ko: 김윤준
-  type: intern
-  image: yunjun_kim.jpg
-  email: yunjun0914@naver.com
-  youtube: https://www.youtube.com/@%EB%96%A8%EC%96%B4%EC%A7%80%EB%8A%94%EB%84%88%EC%9D%98%EB%AA%A8%EC%8A%B5
-
-
-
-- name:
     en: ChaeEun Kim
     ko: 김채은
   type: alumni
-  year: 2022
+  grad: 2022
   affiliation: Ph.D. student at UC Santa Cruz
 
 - name:
@@ -155,6 +116,7 @@
     en: SuJi Kim
     ko: 김수지 
   type: alumni
+  grad: 2025
   affiliation: 
   github: https://github.com/suji2924
   
@@ -164,6 +126,7 @@
   type: alumni
   affiliation:
   github: https://github.com/YJJonatanLee
+  grad: 2025
   
 - name:
     en: JiSoo Kang
@@ -171,6 +134,27 @@
   type: alumni
   affiliation:
   github: https://github.com/kjsoo-1010
+  grad: 2025
+
+- name:
+    en: KiYeon Park
+    ko: 박기연
+  type: alumni
+  image: kiyeon-park.jpg
+  email: willam1017@kookmin.ac.kr
+  homepage: 
+  github: https://github.com/MargielaParis
+  grad: 2026
+
+- name:
+    en: Woosung Cho
+    ko: 조우성
+  type: alumni
+  image: 
+  email: chowoos@kookmin.ac.kr
+  homepage: 
+  github:
+  grad: 2026
 
 - name:
     en: JeongHyun Yoo
@@ -250,3 +234,23 @@
     en: GaHyun Lee
     ko: 이가현
   type: alumni
+
+- name:
+    en: GyeongRin Baek
+    ko: 백경린
+  type: alumni
+  image: gyeongrin-baek.jpg
+  email: back9656@kookmin.ac.kr
+  homepage:
+  github:
+
+
+# - name:
+#     en: Ahyoung Cho
+#     ko: 조아영
+#   type: under
+#   image: aycho.jpg
+#   email: twnbay@kookmin.ac.kr
+#   homepage:
+#   github:
+
