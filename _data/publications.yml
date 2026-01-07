@@ -1,3 +1,17 @@
+- type: international_journal
+  title: "Efficient Time-Restricted kNN Search in High-Dimensional Data Using Multi-Level Block Indexing, with Extensions to Multi-Attribute Filtering"
+  venue:
+    text: "ACM Transactions on Knowledge Discovery from Data (TKDD)"
+    link: "https://dl.acm.org/journal/tkdd"
+  year: 2026
+  authors: 
+    - Jisoo Kang
+    - Changhun Han
+    - Suji Kim
+    - Ha-Myung Park
+  links:
+    to appear:
+
 - type: international_conference
   title: "SkySearch: Satellite Video Search at Scale"
   venue:
