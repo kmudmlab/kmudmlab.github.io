@@ -158,6 +158,9 @@ Welcome to Data Mining Laboratory in Kookmin University.
 
 ## News
 
+- **[2026-01]** Our work (Jisoo Kang et al.) has been accepted for publication in TKDD, a top-tier journal in the field of data mining. 
+- **[2025-12]** KiYeon and Woosung have successfully defended their master's thesis. Congratulations!
+
 
 ## Contact Information
 
