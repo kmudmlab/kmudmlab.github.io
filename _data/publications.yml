@@ -10,7 +10,8 @@
     - Suji Kim
     - Ha-Myung Park
   links:
-    to appear:
+    paper: https://dl.acm.org/doi/pdf/10.1145/3789265
+    github: https://github.com/kjsoo-1010/mbi2025
 
 - type: international_conference
   title: "SkySearch: Satellite Video Search at Scale"
