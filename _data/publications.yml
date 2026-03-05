@@ -480,11 +480,15 @@
   application:
     number: "1020230023710"
     date: "2023.02.22"
+  registration:
+    number: "1028530300000"
+    date: "2025.08.27"
   inventors:
     - 박하명
     - 김유진
     - 이소정
   applicant: "국민대학교산학협력단"
+  doi: https://doi.org/10.8080/1020230023710
 
 
 - type: patent
