@@ -63,10 +63,25 @@ show_title: false
 우리의 연구는 크게 두 가지 상반된 컴퓨팅 환경에 초점을 맞춥니다. 하나는 수백, 수천 대의 서버를 엮어 거대한 문제를 해결하는 **분산/병렬 시스템(Distributed/Parallel Systems)**입니다. 여기서는 데이터를 각 서버에 어떻게 분배하고, 통신 비용을 최소화하며, 특정 서버에 작업이 몰리는 병목 현상을 해결하여 전체 처리 시간을 단축하는 알고리즘을 개발합니다.
 다른 하나는 스마트폰, IoT 센서와 같이 컴퓨팅 자원이 극히 부족한 **엣지 디바이스(Edge Devices)**입니다. 이 환경에서는 제한된 메모리와 배터리, 계산 능력 내에서 연산 효율성을 극대화하여, 네트워크 연결 없이도 기기 자체에서 실시간 데이터 분석이 가능한 경량 알고리즘을 연구합니다.
 
+- type: international_journal
+  title: "Efficient Time-Restricted kNN Search in High-Dimensional Data Using Multi-Level Block Indexing, with Extensions to Multi-Attribute Filtering"
+  venue:
+    text: "ACM Transactions on Knowledge Discovery from Data (TKDD)"
+    link: "https://dl.acm.org/journal/tkdd"
+  year: 2026
+  authors: 
+    - Jisoo Kang
+    - Changhun Han
+    - Suji Kim
+    - Ha-Myung Park
+  links:
+    paper: https://dl.acm.org/doi/pdf/10.1145/3789265
+    github: https://github.com/kjsoo-1010/mbi2025
 
 #### Publications
+- Efficient Time-Restricted kNN Search in High-Dimensional Data Using Multi-Level Block Indexing, with Extensions to Multi-Attribute Filtering, TKDD, 2026 (SCIE Q1 학술지)
 - BTS: Load-Balanced Distributed Union-Find for Finding Connected Components with Balanced Tree Structures, ICDE, 2024 (최우수 국제 학회)
 - Efficient Proximity Search in Time-evolving High-dimensional Data using Multi-level Block Indexing, EDBT, 2024 (우수 국제 학회)
 - Efficient Distributed Approximate k-Nearest Neighbor Graph Construction by Multiway Random Division Forest, KDD, 2023 (최우수 국제 학회)
-- UniCon: A Unified Star-Operation to Efficiently Find Connected Components on a Cluster of Commodity Hardware, PLOS ONE, 2022
-- PACC: Large Scale Connected Component Computation on Hadoop and Spark, PLOS ONE, 2020
+- UniCon: A Unified Star-Operation to Efficiently Find Connected Components on a Cluster of Commodity Hardware, PLOS ONE, 2022 (SCIE Q2 학술지)
+- PACC: Large Scale Connected Component Computation on Hadoop and Spark, PLOS ONE, 2020 (SCIE Q2 학술지)
