@@ -432,6 +432,17 @@
 
 - type: patent
   title:
+    en: "Apparatus and Method For Neural Network Quantization Based on High-Dimensional Lattice Structure"
+    ko: "고차원 격자 구조 기반 신경망 양자화 장치 및 방법"
+  application:
+    number: "1020260047930"
+    date: "2026.03.17"
+  inventors:
+    - 박하명
+  applicant: "국민대학교산학협력단"
+
+- type: patent
+  title:
     en: "Multi-Level Block Indexing for Efficient Proximity Search in Time-Accumulating High-Dimensional Data"
     ko: "시간 축적 고차원 데이터에서의 효율적인 근접 검색을 위한 다중 레벨 블록 인덱싱"
   application:
