@@ -486,8 +486,8 @@
 
 - type: patent
   title:
-    en: "An AutoEncoder-based multimodal embedding method for meteorological satellite images with weather information"
-    ko: "기상관측정보를 고려한 오토인코더 기반 멀티모달 기상위성영상 임베딩 기법"
+    en: "Multimodal Embedding Method and Apparatus for Meteorological Satellite Images with Weather Information"
+    ko: "기상위성영상과 기상관측정보를 활용한 멀티모달 임베딩 방법 및 장치"
   application:
     number: "1020230023710"
     date: "2023.02.22"
