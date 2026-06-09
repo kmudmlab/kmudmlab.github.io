@@ -158,9 +158,11 @@ Welcome to Data Mining Laboratory in Kookmin University.
 
 ## News
 
+
+- **[2026-06]** Our work (Min-Hyoung and Ha-Myung Park) has been accepted for publication in IEEE Access, a Q2 journal in the field of information systems.
+- **[2026-06]** Our lab has secured a new R&D project funded by IITP under the Leading Generative AI Human Resources Development program (led by Synap Soft).
 - **[2026-01]** Our work (Jisoo Kang et al.) has been accepted for publication in TKDD, a top-tier journal in the field of data mining. 
 - **[2025-12]** KiYeon and Woosung have successfully defended their master's thesis. Congratulations!
-
 
 ## Contact Information
 
