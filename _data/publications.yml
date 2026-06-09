@@ -1,4 +1,16 @@
 - type: international_journal
+  title: "COSMO: Contrastive Satellite Image Embedding Techniques Reflecting Expert Weather Bulletins"
+  venue:
+    text: "IEEE Access"
+    link: "https://ieeeaccess.ieee.org/"
+  year: 2026
+  authors: 
+    - Min-Hyoung Kim
+    - Ha-Myung Park
+  links:
+    paper: to appear
+    
+- type: international_journal
   title: "Efficient Time-Restricted kNN Search in High-Dimensional Data Using Multi-Level Block Indexing, with Extensions to Multi-Attribute Filtering"
   venue:
     text: "ACM Transactions on Knowledge Discovery from Data (TKDD)"
