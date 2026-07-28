@@ -42,16 +42,13 @@
   type: grad
   image: mayila.jpg
   email: mayila807@kookmin.ac.kr
-  
 
 - name:
-    en: Jung Eun Park
-    ko: 박정은
-  type: under
-  image: jungeunpark.jpg
-  email: ovepje2004@kookmin.ac.kr
-  homepage:
-  github:
+    en: Raut Nimisha
+    ko: 라우트니미샤
+  type: grad
+  image: nimisha.jpg
+  email: rautnimisha@kookmin.ac.kr
 
 - name:
     en: Junseo Yoon
@@ -68,6 +65,51 @@
   type: under
   image: swpark.png
   email: shark820@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: Jung Eun Park
+    ko: 박정은
+  type: under
+  image: jungeunpark.jpg
+  email: ovepje2004@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: Heo Garim
+    ko: 허가림
+  type: under
+  image: garim.jpg
+  email: garim_0111@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: Hyeon Woo Na
+    ko: 나현우
+  type: under
+  image: hyeonwoo.jpg
+  email: nahw0861@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: Seon MinJe
+    ko: 선민제
+  type: under
+  image: minje.jpg
+  email: minnnje@kookmin.ac.kr
+  homepage:
+  github:
+
+- name:
+    en: Hyemin Han
+    ko: 한혜민
+  type: under
+  image: hyemin.jpg
+  email: hhm282828@kookmin.ac.kr
   homepage:
   github:
 
