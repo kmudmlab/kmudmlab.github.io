@@ -43,6 +43,12 @@
 .pub_button.pub_button-intjour{
   background-color:$green;
 }
+.pub_button.pub_button-domconf{
+  background-color:#6c5ce7;
+}
+.pub_button.pub_button-domjour{
+  background-color:#a29bfe;
+}
 .pub_button.pub_button-patent{
   background-color:$yellow;
 }
@@ -52,5 +58,116 @@
   color:$yellow;
   font-weight:600;
   margin-left:0.5rem;
+}
+
+/* Publications Filter Container & Toggle Buttons */
+.pub_filter_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.pub_filter_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+  outline: none;
+}
+
+.pub_filter_btn .filter_icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.pub_filter_btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Category Active Styles */
+.pub_filter_btn[data-category="international_journal"].active {
+  background-color: $green;
+  color: white;
+  border-color: darken($green, 5%);
+}
+
+.pub_filter_btn[data-category="international_conference"].active {
+  background-color: $blue;
+  color: white;
+  border-color: darken($blue, 5%);
+}
+
+.pub_filter_btn[data-category="domestic"].active {
+  background-color: #6c5ce7;
+  color: white;
+  border-color: darken(#6c5ce7, 5%);
+}
+
+.pub_filter_btn[data-category="patent"].active {
+  background-color: $yellow;
+  color: #1a202c;
+  border-color: darken($yellow, 10%);
+}
+
+/* Inactive (Toggled Off) Button Style */
+.pub_filter_btn:not(.active) {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  border-color: #cbd5e1;
+  opacity: 0.65;
+}
+
+.pub_item {
+  transition: opacity 0.2s ease;
+}
+
+.pub_item.is-hidden {
+  display: none !important;
+}
+
+/* Year Section Header & Divider */
+.pub_year_header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-top: 2rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.pub_year_header.is-hidden {
+  display: none !important;
+}
+
+.no_pub_msg {
+  padding: 3rem 1rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 1.05rem;
+  font-weight: 500;
+  background: #f8fafc;
+  border-radius: 0.5rem;
+  border: 1px dashed #cbd5e1;
+  margin-top: 1rem;
 }
 /* end custom scss snippet */
