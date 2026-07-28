@@ -73,15 +73,21 @@ show_title: false
     {% else %}
       <div class="pub_title">{{ item.title }}</div>
       <div class="pub_authors">
-        {%- assign author_count = item.authors.size -%}
-        {%- if author_count == 1 -%}
-          {{ item.authors[0] }}
-        {%- elsif author_count == 2 -%}
-          {{ item.authors[0] }} and {{ item.authors[1] }}
-        {%- else -%}
+        {%- if item.type == "domestic_conference" or item.type == "domestic_journal" -%}
           {%- for author in item.authors -%}
-            {%- if forloop.last -%}and {{ author }}{%- else -%}{{ author }}, {% endif %}
+            {%- if forloop.last -%}{{ author }}{%- else -%}{{ author }}, {% endif %}
           {%- endfor -%}
+        {%- else -%}
+          {%- assign author_count = item.authors.size -%}
+          {%- if author_count == 1 -%}
+            {{ item.authors[0] }}
+          {%- elsif author_count == 2 -%}
+            {{ item.authors[0] }} and {{ item.authors[1] }}
+          {%- else -%}
+            {%- for author in item.authors -%}
+              {%- if forloop.last -%}and {{ author }}{%- else -%}{{ author }}, {% endif %}
+            {%- endfor -%}
+          {%- endif -%}
         {%- endif -%}
       </div>
       <div class="pub_venue">
