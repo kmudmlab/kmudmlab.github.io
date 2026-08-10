@@ -55,7 +55,7 @@
   - Min-Hyoung Kim
   - Ha-Myung Park
   links:
-    to appear:
+    paper: https://ieeexplore.ieee.org/document/11558279
 - type: international_journal
   title: Efficient Time-Restricted kNN Search in High-Dimensional Data Using Multi-Level
     Block Indexing, with Extensions to Multi-Attribute Filtering
