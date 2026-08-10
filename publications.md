@@ -112,8 +112,10 @@ show_title: false
         {% for link in item.links %}
           {% if link[1] != nil and link[1] != "" %}
           <a href="{{ link[1] }}" target="_blank" rel="noopener noreferrer">{{ link[0] | capitalize }}</a>
-          {%- unless forloop.last %} | {% endunless -%}
+          {% else %}
+          <span>{{ link[0] | capitalize }}</span>
           {% endif %}
+          {%- unless forloop.last %} | {% endunless -%}
         {% endfor %}
         ]
         {% endif %}
