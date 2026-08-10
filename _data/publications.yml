@@ -1,3 +1,30 @@
+- type: international_conference
+  title: 'S3-Prompt: Resolving Activity Cliffs via Structure-Disentangled Molecular Graph-Text Alignment'
+  venue:
+    text: ACM International Conference on Information and Knowledge Management (CIKM)
+    link: https://cikm2026.diag.uniroma1.it/
+  year: 2026
+  authors:
+  - Wooseong Cho
+  - Ha-Myung Park
+  links:
+    paper: to appear
+- type: international_conference
+  title: 'EPTQ: Fast and Accurate 2-bit Post-Training Quantization via Factored E8 Lattice'
+  venue:
+    text: ACM International Conference on Information and Knowledge Management (CIKM)
+    link: https://cikm2026.diag.uniroma1.it/
+  year: 2026
+  authors:
+  - Ha-Myung Park
+  - Jungeun Park
+  - Chaewon Jeong
+  - Woncheol Son
+  - Yunjun Kim
+  - Junseo Youn
+  - Ki Yeon Park
+  links:
+    paper: to appear
 - type: domestic_conference
   title: 서브그래프 기반 이상 탐지에서 소수 클래스 표현력 강화를 위한 연구
   venue:

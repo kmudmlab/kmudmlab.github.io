@@ -158,6 +158,7 @@ Welcome to Data Mining Laboratory in Kookmin University.
 
 ## News
 
+- **[2026-08]** Two papers by our lab members (Ha-Myung Park et al. and Wooseong Cho et al.) have been accepted for publication in CIKM 2026!
 - **[2026-06]** Two papers by our lab members (Dasol Kang et al. and Yunjun Kim et al.) were presented at KCC 2026, and Dasol Kang received the Outstanding Paper Award (우수논문상)!
 - **[2026-06]** Our work (Min-Hyoung and Ha-Myung Park) has been accepted for publication in IEEE Access, a Q2 journal in the field of information systems.
 - **[2026-06]** Our lab has secured a new R&D project funded by IITP under the Leading Generative AI Human Resources Development program (led by Synap Soft).
