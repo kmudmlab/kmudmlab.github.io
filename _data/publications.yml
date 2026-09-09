@@ -1,3 +1,14 @@
+- type: international_journal
+  title: Efficient Reconstruction of Masked Image Embeddings for Region-Specific Satellite Image Retrieval
+  venue:
+    text: IEEE Access
+    link: https://ieeeaccess.ieee.org/
+  year: 2026
+  authors:
+  - YoungJun Lee
+  - Ha-Myung Park
+  links:
+    to appear:
 - type: international_conference
   title: 'S3-Prompt: Resolving Activity Cliffs via Structure-Disentangled Molecular Graph-Text Alignment'
   venue:
