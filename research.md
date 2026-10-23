@@ -1,5 +1,7 @@
 ---
-layout: research
+layout: article
+show_title: false
+article_header: false
 title: Research
 lang: ko
 permalink: /research/
@@ -7,7 +9,9 @@ key: research
 description: "모델 압축, 멀티모달·그래프 표현학습, 대규모 유사도 검색, 병렬·분산 그래프 마이닝을 연구합니다."
 ---
 
-  <main class="container" id="main">
+<link rel="stylesheet" href="{{ "/assets/css/research.css" | relative_url }}">
+
+<div id="research-content">
     <section class="vision" aria-labelledby="vision-heading">
       <p class="eyebrow" lang="en">Our Vision</p>
       <h1 id="vision-heading"><span>데이터를 더 잘 이해하고,</span><span>더 적은 자원으로 활용합니다.</span></h1>
@@ -46,4 +50,4 @@ description: "모델 압축, 멀티모달·그래프 표현학습, 대규모 유
       </div>
     </section>
     <div class="closing"><p>연구실의 전체 논문 목록을 확인해 보세요.</p><a href="{{ '/publications/' | relative_url }}">All Publications <span aria-hidden="true">→</span></a></div>
-  </main>
+</div>
