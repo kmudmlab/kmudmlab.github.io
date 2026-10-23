@@ -13,7 +13,6 @@ description: "모델 압축, 멀티모달·그래프 표현학습, 대규모 유
 
 <div id="research-content">
     <section class="vision" aria-labelledby="vision-heading">
-      <p class="eyebrow" lang="en">Our Vision</p>
       <h1 id="vision-heading"><span>데이터를 더 잘 이해하고,</span><span>더 적은 자원으로 활용합니다.</span></h1>
       <p>데이터마이닝 연구실은 복잡한 데이터에서 의미를 찾고, 이를 효율적으로 활용하는 기술을 연구합니다. 모델 압축, 표현학습, 유사도 검색, 병렬·분산 처리를 연결하여 데이터를 어떻게 표현하고, 찾고, 처리할 것인지 함께 고민합니다.</p>
     </section>

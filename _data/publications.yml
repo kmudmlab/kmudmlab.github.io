@@ -8,7 +8,7 @@
   - YoungJun Lee
   - Ha-Myung Park
   links:
-    to appear:
+    paper: https://doi.org/10.1109/ACCESS.2026.3733715
 - type: international_conference
   title: 'S3-Prompt: Resolving Activity Cliffs via Structure-Disentangled Molecular Graph-Text Alignment'
   venue:

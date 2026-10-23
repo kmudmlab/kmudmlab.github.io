@@ -6,7 +6,6 @@
 #research-content a:hover { color: var(--accent); }
 #research-content a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; border-radius: 2px; }
 #research-content .vision { padding: 40px 0 38px; }
-#research-content .eyebrow { margin: 0 0 15px; color: #004f9f; font-size: 13px; font-weight: 650; letter-spacing: 1.6px; }
 #research-content .vision h1 { margin: 0 0 22px; font-size: clamp(27px, 3.2vw, 39px); line-height: 1.5; font-weight: 650; letter-spacing: -1.4px; word-break: keep-all; }
 #research-content .vision h1 span { display: block; }
 #research-content .vision h1 span:nth-of-type(2) { color: var(--accent); }
