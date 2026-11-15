@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PCA · 투영 분산과 주성분 제거</title>
+<style>
+:root{color-scheme:light;--ink:#1c2d45;--muted:#62738a;--border:#dfe6ee;--bg:#f4f7fb;--pc1:#5266d4;--pc2:#d67b29;--pc3:#119383}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,canvas:focus-visible{outline:3px solid #5266d4;outline-offset:4px}header{max-width:1540px;margin:auto;padding:32px 36px 24px;display:flex;justify-content:space-between;gap:24px;align-items:flex-end}.eyebrow{color:#4e617a;letter-spacing:.12em;font-size:12px;font-weight:700;margin-bottom:10px}h1{font-size:clamp(25px,3vw,36px);letter-spacing:-.04em;margin:0 0 10px}header p{font-size:15px;line-height:1.65;color:var(--muted);margin:0}.tag{flex-shrink:0;font-size:13px;color:#4e617a;padding-bottom:5px}.layout{max-width:1540px;margin:auto;padding:0 36px 30px;display:grid;grid-template-columns:286px minmax(0,1fr);gap:20px}aside,.stage{background:white;border:1px solid var(--border);border-radius:16px}aside{padding:23px 20px;align-self:start}h2{font-size:15px;margin:0 0 16px}.group+.group{border-top:1px solid var(--border);margin-top:22px;padding-top:22px}.toggle{display:grid;grid-template-columns:18px 1fr;gap:11px;align-items:start;margin:0 0 17px;cursor:pointer}.toggle:last-child{margin-bottom:0}.toggle input{width:17px;height:17px;margin:3px 0 0;accent-color:var(--ink)}.name{font-size:14px;font-weight:650;display:flex;align-items:center;gap:7px}.swatch{height:9px;width:9px;border-radius:50%;display:inline-block;flex-shrink:0}.desc{display:block;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.6}.formula{font-family:"Cambria Math","Times New Roman",serif;font-size:16px;font-style:italic;color:#43516b;display:block;margin-top:5px}.eigen-row{display:grid;grid-template-columns:18px 1fr auto;align-items:center;gap:11px;margin:0 0 14px;font-size:14px;cursor:pointer}.eigen-row input{width:17px;height:17px;margin:0;accent-color:var(--ink)}.eigen-value{font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted)}.small-note{font-size:12px;color:var(--muted);line-height:1.65;margin:12px 0 0}.stage{overflow:hidden;min-width:0;position:relative;display:flex;flex-direction:column}.stage-head{padding:18px 22px 14px;display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid #edf0f5}.stage-head strong{font-size:14px}.views{display:flex;gap:6px;flex-wrap:wrap}.views button,.reset{border:1px solid var(--border);background:white;color:#526178;border-radius:7px;padding:8px 10px;font-size:12px}.views button[aria-pressed=true]{background:#233954;color:white;border-color:#233954}.canvas-wrap{position:relative;flex:1;min-height:535px;background:radial-gradient(ellipse at 50% 42%,#fff,#f5f8fc)}canvas{display:block;width:100%;height:100%;position:absolute;touch-action:none;cursor:grab}canvas.dragging{cursor:grabbing}.hint{position:absolute;left:20px;bottom:15px;color:#7a889b;font-size:12px;pointer-events:none}.reset{position:absolute;right:18px;bottom:12px}.tooltip{position:absolute;pointer-events:none;background:rgba(24,42,64,.95);color:white;padding:10px 13px;border-radius:8px;font-size:12px;line-height:1.6;z-index:2;max-width:240px;box-shadow:0 5px 20px #16294120}.tooltip[hidden]{display:none}.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border)}.stat{padding:17px 21px;min-width:0}.stat+.stat{border-left:1px solid var(--border)}.stat-label{font-size:12px;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:7px}.stat-value{font-size:23px;font-weight:650;letter-spacing:-.03em;font-variant-numeric:tabular-nums}.stat-value small{font-size:12px;font-weight:400;letter-spacing:0;margin-left:5px;color:var(--muted)}.stat.off{opacity:.35}.caption{max-width:1540px;margin:0 auto;padding:0 38px 32px;color:var(--muted);font-size:13px;line-height:1.85}.caption strong{color:var(--ink);font-weight:600}.kbd{font-size:11px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media(min-width:1400px){.canvas-wrap{min-height:610px}}
+@media(max-width:900px){header{padding:24px 20px 20px}.layout{padding:0 20px 20px;grid-template-columns:240px minmax(0,1fr);gap:12px}aside{padding:20px 15px}.stage-head{align-items:flex-start;flex-direction:column}.canvas-wrap{min-height:510px}.stat{padding:14px 11px}.stat-label{font-size:11px}.stat-value{font-size:20px}.stat-value small{display:block;margin:5px 0 0}.caption{padding:0 22px 25px}.tag{display:none}}
+@media(max-width:650px){header{padding:24px 18px 18px}.layout{padding:0 14px 20px;display:flex;flex-direction:column}.stage{order:0}aside{order:1;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:20px}.group+.group{border:0;margin:0;padding:0}.group:last-child{grid-column:1/-1;border-top:1px solid var(--border);padding-top:17px}.canvas-wrap{min-height:430px}.stage-head{padding:14px 16px}.stage-head strong{display:none}.hint{left:12px;font-size:10px;bottom:19px}.reset{right:10px;font-size:11px;padding:7px}.stats .stat{padding:14px 10px}.stat-label{line-height:1.5}.caption{padding:0 18px 24px}.name{font-size:13px}.eigen-row{font-size:13px;gap:7px}.formula{font-size:14px}}
+</style>
+<style>
+[hidden]{display:none!important}.demo-nav{max-width:1540px;margin:auto;padding:24px 36px 0;display:flex;gap:8px;flex-wrap:wrap}.demo-nav button{padding:11px 18px;border:1px solid var(--border);border-radius:9px;background:white;color:var(--muted);font-size:14px;font-weight:600}.demo-nav button[aria-selected=true]{background:#233954;color:white;border-color:#233954}.angle-title{display:flex;justify-content:space-between;align-items:center;font-size:14px}.angle-title output{font-size:27px;letter-spacing:-.04em;font-weight:650;font-variant-numeric:tabular-nums;color:var(--pc2)}#angle2d{width:100%;margin:20px 0 8px;accent-color:var(--pc2);cursor:pointer;min-height:25px}.range-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.angle-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.angle-actions button{background:white;border:1px solid var(--border);border-radius:7px;padding:9px 10px;color:#526178;font-size:12px}.angle-actions button:first-child{background:#233954;border-color:#233954;color:white}.turn-note{font-size:12px;line-height:1.7;color:var(--muted);min-height:40px;margin:13px 0 0}.two-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}.two-legend span{display:flex;align-items:center;gap:6px}.two-wrap{position:relative;min-height:650px;flex:1;background:radial-gradient(ellipse at 50% 35%,#fff,#f5f8fc)}#plot2d{cursor:crosshair}.curve-wrap{height:170px;position:relative;margin:4px 0 0}.two-formula{font-size:17px;line-height:1.9;font-family:"Cambria Math","Times New Roman",serif;color:var(--ink)}#demo2d .group h2{margin-bottom:12px}#demo2d .two-hint{font-size:12px;color:var(--muted);font-weight:400}.two-caption{padding-top:0}.curve-caption{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6}
+#demo2d .stage-head{order:0}#demo2d .stats{order:1;border-top:0;border-bottom:1px solid var(--border)}#demo2d .two-wrap{order:2}
+@media(max-width:900px){.demo-nav{padding:20px 20px 0}.two-wrap{min-height:600px}.two-legend{gap:10px}.two-hint{line-height:1.6}}
+@media(max-width:650px){.demo-nav{padding:18px 14px 0}.demo-nav button{padding:10px 12px;font-size:12px}.two-wrap{min-height:480px}#demo2d aside{display:block}#demo2d .group+.group{margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}#demo2d .stage-head{gap:9px}#demo2d .stage-head strong{display:block;font-size:12px}.two-legend{font-size:11px}.curve-wrap{height:190px}#demo2d .turn-note{min-height:0}.two-hint{font-size:11px!important}}
+</style>
+<style>
+.direction-range{width:100%;margin:15px 0 6px;accent-color:var(--pc2);min-height:25px;cursor:pointer}.projection3-wrap{position:relative;min-height:640px;flex:1;background:radial-gradient(ellipse at 50% 40%,#fff,#f5f8fc)}#demoproj3d .stats{border-top:0;border-bottom:1px solid var(--border)}#demoproj3d .angle-title output{font-size:23px}#vectorP3{font-size:16px}#demoproj3d .stage{align-self:start}#demoproj3d .small-note{overflow-wrap:anywhere}
+@media(max-width:650px){#demoproj3d aside{display:block}#demoproj3d .group+.group{margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}.projection3-wrap{min-height:490px}}
+</style>
+</head>
+<body>
+<nav class="demo-nav" role="tablist" aria-label="PCA 예시 선택"><button type="button" id="tab2d" role="tab" aria-selected="true" aria-controls="demo2d">2차원 · 분산을 최대화하는 축</button><button type="button" id="tabproj3d" role="tab" aria-selected="false" aria-controls="demoproj3d" tabindex="-1">3차원 · 분산을 최대화하는 축</button><button type="button" id="tab3d" role="tab" aria-selected="false" aria-controls="demo3d" tabindex="-1">3차원 · 주성분 제거</button></nav>
+<section id="demo2d" role="tabpanel" aria-labelledby="tab2d">
+ <header><div><div class="eyebrow">PROJECTION & VARIANCE</div><h1>어느 방향으로 투영할까?</h1><p>방향 벡터를 돌리면 모든 점의 투영 위치가 바뀝니다. 투영 좌표가 가장 넓게 퍼지는 방향을 찾아보세요.</p></div><div class="tag">평균 중심화한 합성 데이터 · 100개 점</div></header>
+ <div class="layout">
+  <aside aria-label="2차원 투영 설정">
+   <section class="group"><div class="angle-title"><label for="angle2d">가로축과의 각도 θ</label><output id="angle2dValue" for="angle2d">0.0°</output></div><input id="angle2d" type="range" min="0" max="180" step="0.1" value="0" aria-label="투영 방향 각도"><div class="range-labels"><span>0°</span><span>90°</span><span>180°</span></div><div class="angle-actions"><button type="button" id="best2d">최대 분산 방향</button><button type="button" id="reset2d">0°로 초기화</button></div><p class="turn-note" id="turn2d" aria-live="polite"></p></section>
+   <section class="group"><h2>표시</h2><label class="toggle"><input type="checkbox" id="lines2d" checked><span class="name">각 점의 수직 투영선</span></label><label class="toggle"><input type="checkbox" id="optimum2d"><span><span class="name">첫 번째 주성분 방향</span><span class="desc">최대 분산 방향을 점선으로 비교</span></span></label></section>
+   <section class="group"><h2>각도에 따른 투영 분산</h2><div class="curve-wrap"><canvas id="curve2d" role="img" aria-label="투영 분산은 35도에서 9로 최대, 125도에서 1로 최소입니다. 현재 각도의 위치를 함께 표시합니다."></canvas></div><p class="curve-caption">같은 길이의 단위벡터끼리 방향을 비교합니다.</p></section>
+   <section class="group"><h2>계산</h2><div class="two-formula">v = (cos θ, sin θ)ᵀ<br>zᵢ = xᵢᵀv<br>투영점 = zᵢv<br>Var(z) = vᵀSv</div><p class="small-note">이 예시에서 ‖v‖ = 1입니다.<br>zᵢ는 원점을 기준으로 한 부호 있는 좌표입니다.</p></section>
+  </aside>
+  <section class="stage" aria-label="2차원 투영 시각화"><div class="stage-head"><div class="two-legend"><span><i class="swatch" style="background:var(--pc1)"></i>원본 점</span><span><i class="swatch" style="background:var(--pc2)"></i>투영점</span><span><i class="swatch" style="background:var(--pc3)"></i>최대 분산 방향</span></div><strong class="two-hint">그래프를 드래그하거나 각도 슬라이더를 움직이세요</strong></div><div class="two-wrap" id="wrap2d"><canvas id="plot2d" tabindex="0" aria-label="회전하는 단위벡터와 모든 데이터의 투영점. 드래그 또는 방향키로 각도를 바꿀 수 있습니다. 아래에는 투영 좌표를 펼친 1차원 점 분포가 있습니다."></canvas></div><div class="stats" aria-live="polite"><div class="stat"><div class="stat-label">현재 투영 분산</div><div class="stat-value" id="variance2d"></div></div><div class="stat"><div class="stat-label">최대 분산</div><div class="stat-value">9.00<small>θ = 35°</small></div></div><div class="stat"><div class="stat-label">전체 분산 대비 투영 분산</div><div class="stat-value" id="retained2d"></div></div></div></section>
+ </div>
+ <div class="caption two-caption"><strong>읽는 방법</strong> · 주황색 축 위의 점은 각 원본 점을 수직으로 내려 찍은 결과입니다. 아래 1차원 분포는 같은 투영 좌표 zᵢ를 가로로 펼쳐 보여줍니다.<br>이 데이터의 첫 번째 주성분은 가로축에서 <strong>35°</strong> 기울어진 방향입니다. 그 방향의 분산은 <strong>9</strong>, 수직인 125° 방향의 분산은 <strong>1</strong>입니다. v와 −v는 같은 축이므로 분산은 180°마다 반복됩니다.</div>
+</section>
+<section id="demoproj3d" role="tabpanel" aria-labelledby="tabproj3d" hidden>
+ <header><div><div class="eyebrow">3D PROJECTION & VARIANCE</div><h1>3차원에서 가장 넓게 퍼지는 방향</h1><p>단위벡터의 방향을 움직이며 모든 점을 한 축에 투영해 보세요. 방향을 바꿀 때마다 투영 좌표와 분산이 함께 바뀝니다.</p></div><div class="tag">주성분 제거 예시와 같은 240개 점</div></header>
+ <div class="layout">
+  <aside aria-label="3차원 투영 설정">
+   <section class="group"><div class="angle-title"><label for="azP3">방위각 α</label><output id="azP3Value">0.0°</output></div><input class="direction-range" type="range" id="azP3" min="0" max="360" step="0.1" value="0"><div class="range-labels"><span>0°</span><span>180°</span><span>360°</span></div><p class="small-note">x₁x₂ 평면에서 x₁축을 기준으로 회전</p></section>
+   <section class="group"><div class="angle-title"><label for="elP3">고도각 β</label><output id="elP3Value">0.0°</output></div><input class="direction-range" type="range" id="elP3" min="-90" max="90" step="0.1" value="0"><div class="range-labels"><span>−90°</span><span>0°</span><span>90°</span></div><p class="small-note">x₁x₂ 평면에서 위·아래로 기울이기</p><div class="angle-actions"><button type="button" id="bestP3">최대 분산 방향</button><button type="button" id="axisP3">x₁축으로 초기화</button></div><p class="turn-note" id="turnP3" aria-live="polite"></p></section>
+   <section class="group"><h2>표시</h2><label class="toggle"><input type="checkbox" id="linesP3" checked><span class="name">모든 점의 수직 투영선</span></label><label class="toggle"><input type="checkbox" id="pcP3"><span><span class="name">첫 번째 주성분 방향</span><span class="desc">최대 분산 방향을 점선으로 비교</span></span></label></section>
+   <section class="group"><h2>현재 단위벡터</h2><div id="vectorP3" class="two-formula"></div><p class="small-note">‖v‖ = 1<br>v = (cos β cos α, cos β sin α, sin β)ᵀ</p><div class="two-formula" style="margin-top:12px">zᵢ = xᵢᵀv<br>투영점 = zᵢv<br>Var(z) = vᵀSv</div></section>
+  </aside>
+  <section class="stage"><div class="stage-head"><div class="two-legend"><span><i class="swatch" style="background:var(--pc1)"></i>원본 점</span><span><i class="swatch" style="background:var(--pc2)"></i>투영점</span></div><div class="views" aria-label="드래그 동작"><button id="dragVectorP3" type="button" aria-pressed="true">벡터 회전</button><button id="dragViewP3" type="button" aria-pressed="false">시점 회전</button><button id="resetViewP3" type="button">시점 초기화</button></div></div>
+   <div class="stats" aria-live="polite"><div class="stat"><div class="stat-label">현재 투영 분산</div><div class="stat-value" id="varianceP3"></div></div><div class="stat"><div class="stat-label">최대 분산 λ₁</div><div class="stat-value">6.00<small>첫 번째 주성분 방향</small></div></div><div class="stat"><div class="stat-label">전체 분산 대비 투영 분산</div><div class="stat-value" id="retainedP3"></div></div></div>
+   <div class="projection3-wrap" id="wrapP3"><canvas id="plotP3" tabindex="0" aria-label="3차원 데이터와 회전하는 투영축. 드래그와 방향키는 선택한 모드에 따라 벡터 또는 시점을 회전합니다. 휠로 확대합니다."></canvas></div>
+  </section>
+ </div>
+ <div class="caption"><strong>읽는 방법</strong> · 방위각과 고도각으로 벡터 v의 방향을 조절합니다. 그래프 위에서 드래그할 때도 선택한 모드에 따라 벡터 또는 시점이 회전합니다. 시점만 바꾸면 분산은 그대로입니다.<br>투영 분산은 첫 번째 주성분 방향에서 최대 <strong>6</strong>입니다. 원본의 전체 분산은 6 + 2.2 + 0.55 = <strong>8.75</strong>이므로, 가장 좋은 축 하나를 남기면 전체 분산의 약 <strong>68.6%</strong>가 남습니다. 짧은 화살표는 단위벡터 v, 긴 주황색 직선은 투영축입니다.</div>
+</section>
+<section id="demo3d" role="tabpanel" aria-labelledby="tab3d" hidden>
+<header>
+ <div><div class="eyebrow">PRINCIPAL COMPONENT ANALYSIS</div><h1>주성분을 하나씩 제거하면</h1><p>3차원 점 구름에서 첫 번째 성분을 빼면 평면에, 두 번째까지 빼면 직선에 점들이 남습니다.</p></div>
+ <div class="tag">평균 중심화한 합성 데이터 · 240개 점</div>
+</header>
+<main class="layout">
+ <aside aria-label="시각화 표시 설정">
+  <section class="group"><h2>데이터</h2>
+   <label class="toggle"><input type="checkbox" id="original" checked><span><span class="name"><i class="swatch" style="background:var(--pc1)"></i>원본 데이터</span><span class="formula">x</span><span class="desc">평균이 원점인 3차원 점 구름</span></span></label>
+   <label class="toggle"><input type="checkbox" id="residual1" checked><span><span class="name"><i class="swatch" style="background:var(--pc2)"></i>첫 번째 주성분 제거</span><span class="formula">r₁ = x − (xᵀu₁)u₁</span><span class="desc">u₂, u₃가 만드는 평면에 남는 점</span></span></label>
+   <label class="toggle"><input type="checkbox" id="residual2" checked><span><span class="name"><i class="swatch" style="background:var(--pc3)"></i>두 번째 주성분까지 제거</span><span class="formula">r₂ = r₁ − (xᵀu₂)u₂</span><span class="desc">u₃ 방향의 직선에 남는 점</span></span></label>
+  </section>
+  <section class="group"><h2>주성분 벡터</h2>
+   <label class="eigen-row"><input type="checkbox" id="pc1" checked><span style="color:var(--pc1)">λ₁u₁</span><span class="eigen-value" id="eigen1"></span></label>
+   <label class="eigen-row"><input type="checkbox" id="pc2" checked><span style="color:var(--pc2)">λ₂u₂</span><span class="eigen-value" id="eigen2"></span></label>
+   <label class="eigen-row"><input type="checkbox" id="pc3" checked><span style="color:var(--pc3)">λ₃u₃</span><span class="eigen-value" id="eigen3"></span></label>
+   <p class="small-note">화살표의 3차원 길이 = 고유값 λᵢ<br>방향 uᵢ는 단위 고유벡터입니다.<br>성분 제거 계산에는 uᵢ를 사용합니다.</p>
+  </section>
+  <section class="group"><h2>보조 표시</h2>
+   <label class="toggle"><input type="checkbox" id="guides" checked><span><span class="name">잔차 평면과 직선</span><span class="desc">해당 데이터가 켜져 있을 때 표시</span></span></label>
+   <label class="toggle"><input type="checkbox" id="connections"><span><span class="name">한 점의 이동 경로</span><span class="desc">원본에서 평면, 평면에서 직선으로</span></span></label>
+  </section>
+ </aside>
+ <section class="stage" aria-label="3차원 데이터 시각화">
+  <div class="stage-head"><strong>원점 중심의 3차원 좌표계</strong><div class="views" aria-label="시점 선택"><button id="view3d" type="button" aria-pressed="true">입체</button><button id="viewFront" type="button" aria-pressed="false">잔차 평면 정면</button><button id="viewEdge" type="button" aria-pressed="false">잔차 평면 옆면</button></div></div>
+  <div class="canvas-wrap" id="wrap"><canvas id="plot" tabindex="0" aria-label="드래그로 회전하고 휠 또는 두 손가락으로 확대합니다. 키보드 방향키로 회전, 더하기와 빼기로 확대 또는 축소합니다. 아래에는 각 데이터의 남은 분산이 표시됩니다."></canvas><div class="tooltip" id="tooltip" hidden></div><div class="hint">드래그: 회전 · 휠/핀치: 확대 · 방향키: 회전</div><button class="reset" type="button" id="reset">시점 초기화</button></div>
+  <div class="stats" aria-live="polite">
+   <div class="stat" id="stat-original"><div class="stat-label"><i class="swatch" style="background:var(--pc1)"></i>원본 전체 분산</div><div class="stat-value" id="var0"></div></div>
+   <div class="stat" id="stat-residual1"><div class="stat-label"><i class="swatch" style="background:var(--pc2)"></i>첫 번째 제거 후</div><div class="stat-value" id="var1"></div></div>
+   <div class="stat" id="stat-residual2"><div class="stat-label"><i class="swatch" style="background:var(--pc3)"></i>두 번째까지 제거 후</div><div class="stat-value" id="var2"></div></div>
+  </div>
+ </section>
+</main>
+<div class="caption"><strong>읽는 방법</strong> · 원본을 끄고 잔차 평면을 회전해 보세요. 첫 번째 성분을 제거한 점들은 정확히 u₁에 수직인 평면에 놓입니다. 두 번째까지 제거하면 u₃ 방향만 남습니다.<br>표본 공분산 S = XᵀX / (n − 1)의 고유값을 사용합니다. 화살표는 요청한 대로 <strong>표준편차 √λ가 아닌 분산 λ</strong>를 길이로 나타냅니다. 이는 방향별 분산을 비교하기 위한 표시이며, 점 구름의 실제 퍼짐 폭과는 다른 척도입니다.</div>
+</section>
+<script>
+'use strict';
+(() => {
+ const $=id=>document.getElementById(id),dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0),mul=(a,k)=>a.map(x=>x*k),add=(a,b)=>a.map((x,i)=>x+b[i]),sub=(a,b)=>a.map((x,i)=>x-b[i]),norm=a=>Math.hypot(...a),unit=a=>mul(a,1/norm(a)),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+ const N=240,colors=['#5266d4','#d67b29','#119383'],names=['원본 데이터','첫 번째 제거 후','두 번째까지 제거 후'];
+ let seed=72941;
+ function random(){seed=(Math.imul(1664525,seed)+1013904223)>>>0;return(seed+.5)/4294967296;}
+ function normal(){return Math.sqrt(-2*Math.log(random()))*Math.cos(2*Math.PI*random());}
+ // Center and orthogonalize the score columns to obtain a reproducible sample covariance.
+ const columns=[];
+ for(let k=0;k<3;k++){let a=Array.from({length:N},normal);const mean=a.reduce((s,x)=>s+x,0)/N;a=a.map(x=>x-mean);for(const b of columns)a=sub(a,mul(b,dot(a,b)/dot(b,b)));a=mul(a,Math.sqrt((N-1)/dot(a,a)));columns.push(a);}
+ const b1=unit([.75,.52,.41]),b2=unit(cross([0,0,1],b1)),b3=cross(b1,b2),basis=[b1,b2,b3],desired=[6,2.2,.55];
+ const X=Array.from({length:N},(_,i)=>basis.reduce((p,u,j)=>add(p,mul(u,columns[j][i]*Math.sqrt(desired[j]))),[0,0,0]));
+ const mean=X.reduce(add,[0,0,0]).map(x=>x/N);for(let i=0;i<N;i++)X[i]=sub(X[i],mean);
+ const S=Array.from({length:3},(_,i)=>Array.from({length:3},(_,j)=>X.reduce((s,p)=>s+p[i]*p[j],0)/(N-1)));
+ // Symmetric Jacobi eigendecomposition of the actual sample covariance.
+ function eigSym(matrix){const a=matrix.map(r=>r.slice()),q=[[1,0,0],[0,1,0],[0,0,1]];for(let k=0;k<60;k++){let p=0,r=1;for(let i=0;i<3;i++)for(let j=i+1;j<3;j++)if(Math.abs(a[i][j])>Math.abs(a[p][r])){p=i;r=j;}if(Math.abs(a[p][r])<1e-13)break;const t=.5*Math.atan2(2*a[p][r],a[r][r]-a[p][p]),c=Math.cos(t),s=Math.sin(t),app=a[p][p],arr=a[r][r],apr=a[p][r];for(let i=0;i<3;i++)if(i!==p&&i!==r){const ip=a[i][p],ir=a[i][r];a[i][p]=a[p][i]=c*ip-s*ir;a[i][r]=a[r][i]=s*ip+c*ir;}a[p][p]=c*c*app-2*s*c*apr+s*s*arr;a[r][r]=s*s*app+2*s*c*apr+c*c*arr;a[p][r]=a[r][p]=0;for(let i=0;i<3;i++){const ip=q[i][p],ir=q[i][r];q[i][p]=c*ip-s*ir;q[i][r]=s*ip+c*ir;}}
+ return [0,1,2].map(j=>{let u=unit(q.map(r=>r[j]));const max=u.reduce((m,x,i)=>Math.abs(x)>Math.abs(u[m])?i:m,0);if(u[max]<0)u=mul(u,-1);return{value:a[j][j],vector:u};}).sort((a,b)=>b.value-a.value);}
+ const eigen=eigSym(S),lambda=eigen.map(e=>e.value),U=eigen.map(e=>e.vector);
+ const R1=X.map(p=>sub(p,mul(U[0],dot(p,U[0])))),R2=R1.map(p=>sub(p,mul(U[1],dot(p,U[1])))),sets=[X,R1,R2],keys=['original','residual1','residual2'];
+ const variance=pts=>pts.reduce((s,p)=>s+dot(p,p),0)/(N-1),total=variance(X),vars=sets.map(variance);
+ vars.forEach((v,i)=>{$('var'+i).innerHTML=v.toFixed(2)+'<small>'+Math.round(100*v/total)+'% 남음</small>';});lambda.forEach((v,i)=>$('eigen'+(i+1)).textContent='길이 '+v.toFixed(2));
+ const canvas=$('plot'),ctx=canvas.getContext('2d'),wrap=$('wrap'),tooltip=$('tooltip');
+ let width=0,height=0,yaw=-.65,pitch=.65,zoom=1.1,screenPoints=[],raf=0;
+ const radius=Math.max(...X.map(norm),...lambda)*1.14;
+ let shown=Object.fromEntries([...keys,'pc1','pc2','pc3','guides','connections'].map(k=>[k,$(k).checked]));
+ const special=X.reduce((best,p,i)=>Math.abs(dot(p,U[0]))+Math.abs(dot(p,U[1]))>Math.abs(dot(X[best],U[0]))+Math.abs(dot(X[best],U[1]))?i:best,0);
+ function camera(){const d=[Math.cos(pitch)*Math.cos(yaw),Math.cos(pitch)*Math.sin(yaw),Math.sin(pitch)],right=[-Math.sin(yaw),Math.cos(yaw),0],up=cross(d,right);return{d,right,up};}
+ let cam=camera(),arrowLabels=[];
+ function project(p){const scale=Math.min(width,height)*.48/radius*zoom;return{x:width/2+dot(p,cam.right)*scale,y:height/2-dot(p,cam.up)*scale,z:dot(p,cam.d),scale};}
+ function line(a,b,color,lw=1,dash=[]){const x=project(a),y=project(b);ctx.beginPath();ctx.moveTo(x.x,x.y);ctx.lineTo(y.x,y.y);ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.setLineDash(dash);ctx.stroke();ctx.setLineDash([]);}
+ function label(str,x,y,color='#62738a',align='left'){ctx.font='12px "Noto Sans KR","Malgun Gothic",sans-serif';ctx.textAlign=align;ctx.lineWidth=4;ctx.strokeStyle='rgba(248,250,253,.96)';ctx.strokeText(str,x,y);ctx.fillStyle=color;ctx.fillText(str,x,y);}
+ function arrow(u,value,color,title,index){const end=mul(u,value),p=project(end),o=project([0,0,0]),dx=p.x-o.x,dy=p.y-o.y,l=Math.hypot(dx,dy);line([0,0,0],end,color,3);if(l>9){const ux=dx/l,uy=dy/l,head=Math.min(11,l*.35);ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(p.x-head*ux+head*.45*uy,p.y-head*uy-head*.45*ux);ctx.lineTo(p.x-head*ux-head*.45*uy,p.y-head*uy+head*.45*ux);ctx.closePath();ctx.fillStyle=color;ctx.fill();}else{ctx.beginPath();ctx.arc(p.x,p.y,4,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
+ const lx=Math.max(12,Math.min(width-145,p.x+(dx>=0?12:-135)));let ly=Math.max(22,Math.min(height-48,p.y+(index===2?24:-12)));for(let tries=0;tries<5;tries++){if(!arrowLabels.some(b=>lx<b.x+145&&lx+145>b.x&&Math.abs(ly-b.y)<19))break;ly=ly+23<height-45?ly+23:ly-23;}arrowLabels.push({x:lx,y:ly});label(title+'  λ = '+value.toFixed(2),lx,ly,color);}
+ function draw(){raf=0;ctx.clearRect(0,0,width,height);cam=camera();screenPoints=[];arrowLabels=[];
+  // Finite guide patch inside the infinite residual plane span(u2,u3).
+  if(shown.guides&&shown.residual1){const a=3.3*Math.sqrt(lambda[1]),b=3.3*Math.sqrt(lambda[2]);const corners=[[-a,-b],[a,-b],[a,b],[-a,b]].map(([x,y])=>project(add(mul(U[1],x),mul(U[2],y))));ctx.beginPath();corners.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fillStyle='rgba(214,123,41,.055)';ctx.fill();ctx.strokeStyle='rgba(214,123,41,.16)';ctx.lineWidth=1;ctx.stroke();for(let i=-2;i<=2;i++){line(add(mul(U[1],i*a/3),mul(U[2],-b)),add(mul(U[1],i*a/3),mul(U[2],b)),'rgba(214,123,41,.07)');}}
+  const axLen=radius*.71;for(let k=0;k<3;k++){const a=[0,0,0],b=[0,0,0];a[k]=-axLen;b[k]=axLen;line(a,b,'#d8e0eb',1);const e=project(b);label('x'+['₁','₂','₃'][k],e.x+5,e.y-6,'#8c9aaf');}
+  if(shown.guides&&shown.residual2){const l=3.9*Math.sqrt(lambda[2]);line(mul(U[2],-l),mul(U[2],l),'rgba(17,147,131,.38)',1.5,[5,4]);}
+  const all=[];sets.forEach((pts,k)=>{if(shown[keys[k]])pts.forEach((p,i)=>all.push({...project(p),k,i}));});all.sort((a,b)=>a.z-b.z);
+  for(const p of all){const a=p.k===0?.46:p.k===1?.76:.9;ctx.globalAlpha=a;ctx.fillStyle=colors[p.k];ctx.beginPath();ctx.arc(p.x,p.y,p.k===2?3.2:p.k===1?2.9:2.6,0,Math.PI*2);ctx.fill();screenPoints.push(p);}ctx.globalAlpha=1;
+  if(shown.connections){const chain=sets.map(s=>s[special]);if(shown.original&&shown.residual1)line(chain[0],chain[1],colors[1],2,[5,4]);if(shown.residual1&&shown.residual2)line(chain[1],chain[2],colors[2],2,[5,4]);chain.forEach((p,k)=>{if(!shown[keys[k]])return;const pp=project(p);ctx.beginPath();ctx.arc(pp.x,pp.y,5,0,Math.PI*2);ctx.fillStyle=colors[k];ctx.fill();ctx.strokeStyle='white';ctx.lineWidth=1.5;ctx.stroke();});}
+  const origin=project([0,0,0]);ctx.fillStyle='#203751';ctx.beginPath();ctx.arc(origin.x,origin.y,3,0,Math.PI*2);ctx.fill();label('O',origin.x-15,origin.y+17);
+  U.forEach((u,i)=>{if(shown['pc'+(i+1)])arrow(u,lambda[i],colors[i],'PC'+(i+1),i);});
+ }
+ function schedule(){if(!raf)raf=requestAnimationFrame(draw);}
+ function resize(){const rect=wrap.getBoundingClientRect();width=rect.width;height=rect.height;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);schedule();}
+ new ResizeObserver(resize).observe(wrap);
+ [...keys,'pc1','pc2','pc3','guides','connections'].forEach(k=>$(k).addEventListener('change',()=>{shown[k]=$(k).checked;if(keys.includes(k))$('stat-'+k).classList.toggle('off',!shown[k]);tooltip.hidden=true;schedule();}));
+ function active(id){['view3d','viewFront','viewEdge'].forEach(k=>$(k).setAttribute('aria-pressed',String(k===id)));}
+ function view(v,id){yaw=Math.atan2(v[1],v[0]);pitch=Math.asin(v[2]/norm(v));zoom=id==='viewFront'?1.45:1.1;active(id);tooltip.hidden=true;schedule();}
+ $('view3d').addEventListener('click',()=>{yaw=-.65;pitch=.65;zoom=1.1;active('view3d');schedule();});
+ $('viewFront').addEventListener('click',()=>view(U[0],'viewFront'));
+ $('viewEdge').addEventListener('click',()=>view(U[1],'viewEdge'));
+ $('reset').addEventListener('click',()=>$('view3d').click());
+ const pointers=new Map();let previous=null,pinch=null;
+ canvas.addEventListener('pointerdown',e=>{pointers.set(e.pointerId,[e.clientX,e.clientY]);canvas.setPointerCapture(e.pointerId);canvas.classList.add('dragging');tooltip.hidden=true;previous=[e.clientX,e.clientY];if(pointers.size===2){const [a,b]=[...pointers.values()];pinch=Math.hypot(a[0]-b[0],a[1]-b[1]);}});
+ canvas.addEventListener('pointermove',e=>{if(pointers.has(e.pointerId)){pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===2){const [a,b]=[...pointers.values()],dist=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pinch>0)zoom=Math.max(.5,Math.min(3,zoom*dist/pinch));pinch=dist;}else if(previous){yaw-=(e.clientX-previous[0])*.007;pitch=Math.max(-1.48,Math.min(1.48,pitch+(e.clientY-previous[1])*.007));}previous=[e.clientX,e.clientY];active(null);schedule();return;}
+ const rect=canvas.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top;let found=null,best=90;for(const p of screenPoints){const dist=(p.x-x)**2+(p.y-y)**2;if(dist<best){best=dist;found=p;}}if(!found){tooltip.hidden=true;return;}const vec=sets[found.k][found.i];tooltip.textContent=names[found.k]+' · 점 '+(found.i+1)+'\n('+vec.map(v=>v.toFixed(2)).join(', ')+')';tooltip.style.whiteSpace='pre-line';tooltip.style.left=Math.max(8,Math.min(width-230,x+14))+'px';tooltip.style.top=Math.max(8,Math.min(height-85,y+14))+'px';tooltip.hidden=false;});
+ function release(e){pointers.delete(e.pointerId);previous=pointers.size?[...pointers.values()][0]:null;pinch=null;if(!pointers.size)canvas.classList.remove('dragging');}
+ canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercancel',release);canvas.addEventListener('pointerleave',()=>tooltip.hidden=true);
+ canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.5,Math.min(3,zoom*Math.exp(-e.deltaY*.001)));tooltip.hidden=true;schedule();},{passive:false});
+ canvas.addEventListener('keydown',e=>{let handled=true;if(e.key==='ArrowLeft')yaw+=.12;else if(e.key==='ArrowRight')yaw-=.12;else if(e.key==='ArrowUp')pitch=Math.min(1.48,pitch+.12);else if(e.key==='ArrowDown')pitch=Math.max(-1.48,pitch-.12);else if(e.key==='+'||e.key==='=')zoom=Math.min(3,zoom*1.12);else if(e.key==='-')zoom=Math.max(.5,zoom/1.12);else if(e.key==='Home'){$('view3d').click();return;}else handled=false;if(handled){e.preventDefault();active(null);schedule();}});
+ // Read-only numerical diagnostics for reproducibility and local validation.
+ window.pcaDemo={data:X,residual1:R1,residual2:R2,covariance:S,eigenvalues:lambda,eigenvectors:U,variances:vars,getState:()=>({shown:{...shown},yaw,pitch,zoom,visiblePointCount:screenPoints.length}),projectPoint:p=>project(p)};
+ resize();
+})();
+</script>
+<script>
+(() => {
+ 'use strict';
+ const $=id=>document.getElementById(id),dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);
+ const N=100,phi=35*Math.PI/180,original='#5266d4',projected='#d67b29',bestColor='#119383';
+ let seed=83391;const random=()=>{seed=(Math.imul(1664525,seed)+1013904223)>>>0;return(seed+.5)/4294967296;};
+ const normal=()=>Math.sqrt(-2*Math.log(random()))*Math.cos(2*Math.PI*random());
+ const columns=[];
+ for(let j=0;j<2;j++){let a=Array.from({length:N},normal);const mean=a.reduce((s,v)=>s+v,0)/N;a=a.map(v=>v-mean);for(const b of columns){const c=dot(a,b)/dot(b,b);a=a.map((v,i)=>v-c*b[i]);}const scale=Math.sqrt((N-1)/dot(a,a));columns.push(a.map(v=>v*scale));}
+ const X=Array.from({length:N},(_,i)=>[3*columns[0][i]*Math.cos(phi)-columns[1][i]*Math.sin(phi),3*columns[0][i]*Math.sin(phi)+columns[1][i]*Math.cos(phi)]);
+ const S=[[0,0],[0,0]].map((r,i)=>r.map((_,j)=>X.reduce((sum,p)=>sum+p[i]*p[j],0)/(N-1)));
+ const extent=Math.ceil(Math.max(...X.map(p=>Math.hypot(...p)))*1.12),canvas=$('plot2d'),ctx=canvas.getContext('2d'),curve=$('curve2d'),cc=curve.getContext('2d');
+ let angle=0,w=0,h=0,cw=0,ch=0,frame=null,drag=false,pending=0;
+ function calc(theta){const t=theta*Math.PI/180,v=[Math.cos(t),Math.sin(t)],scores=X.map(p=>dot(p,v)),points=scores.map(z=>v.map(a=>a*z)),variance=dot(scores,scores)/(N-1);return{v,scores,points,variance};}
+ let result=calc(angle);
+ function line(c,a,b,color,width=1,dash=[]){c.beginPath();c.moveTo(...a);c.lineTo(...b);c.strokeStyle=color;c.lineWidth=width;c.setLineDash(dash);c.stroke();c.setLineDash([]);}
+ function text(c,t,x,y,color='#62738a',align='left',size=12){c.font=size+'px "Noto Sans KR","Malgun Gothic",sans-serif';c.textAlign=align;c.fillStyle=color;c.fillText(t,x,y);}
+ function circle(c,x,y,r,color){c.beginPath();c.arc(x,y,r,0,2*Math.PI);c.fillStyle=color;c.fill();}
+ function draw(){pending=0;if(w<1||h<1)return;
+  ctx.clearRect(0,0,w,h);const topHeight=h-145,margin=w<500?40:53,side=Math.min(w-margin*2,topHeight-62),cx=w/2,cy=topHeight/2+3,scale=side/(2*extent);frame={cx,cy,scale,side};const p=([x,y])=>[cx+x*scale,cy-y*scale];
+  const interval=extent>10?5:2;for(let t=-Math.floor(extent/interval)*interval;t<=extent;t+=interval){line(ctx,p([t,-extent]),p([t,extent]),t===0?'#aebbd0':'#e7edf5',t===0?1.2:1);line(ctx,p([-extent,t]),p([extent,t]),t===0?'#aebbd0':'#e7edf5',t===0?1.2:1);if(t!==0){text(ctx,t,...[cx+t*scale,cy+16],'#8a99ad','center',11);text(ctx,t,cx-9,cy-t*scale+4,'#8a99ad','right',11);}}
+  text(ctx,'x₁',cx+extent*scale+8,cy-8);text(ctx,'x₂',cx+9,cy-extent*scale-8);
+  if($('optimum2d').checked){const u=[Math.cos(phi),Math.sin(phi)];line(ctx,p(u.map(x=>-extent*x)),p(u.map(x=>extent*x)),bestColor,2,[6,5]);const pt=p(u.map(x=>extent*.87*x));text(ctx,'PC1 · 35°',pt[0]+7,pt[1]-10,bestColor,'left',12);}
+  const v=result.v;line(ctx,p(v.map(x=>-extent*x)),p(v.map(x=>extent*x)),projected,1.8);
+  if($('lines2d').checked)X.forEach((point,i)=>line(ctx,p(point),p(result.points[i]),'rgba(214,123,41,.18)',1));
+  X.forEach(point=>circle(ctx,...p(point),2.8,'rgba(82,102,212,.57)'));
+  result.points.forEach(point=>circle(ctx,...p(point),3.1,projected));
+  // The short arrow has unit length. The distant hollow handle controls direction only.
+  const [ex,ey]=p(v),[ox,oy]=p([0,0]),dx=ex-ox,dy=ey-oy,len=Math.hypot(dx,dy),ux=dx/len,uy=dy/len;line(ctx,[ox,oy],[ex,ey],'#a65316',4);ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex-8*ux+4*uy,ey-8*uy-4*ux);ctx.lineTo(ex-8*ux-4*uy,ey-8*uy+4*ux);ctx.closePath();ctx.fillStyle='#a65316';ctx.fill();text(ctx,'v',ex+7,ey-9,'#a65316','left',15);
+  const handle=p(v.map(x=>extent*.91*x));circle(ctx,...handle,8,'white');ctx.beginPath();ctx.arc(...handle,8,0,2*Math.PI);ctx.strokeStyle=projected;ctx.lineWidth=2.5;ctx.stroke();text(ctx,angle.toFixed(1)+'°',Math.max(34,Math.min(w-34,handle[0])),Math.max(22,handle[1]-17),projected,'center',12);
+  circle(ctx,cx,cy,3,'#233954');
+  // Plot the signed projection coordinates on a horizontal number line.
+  const y0=topHeight+70,left=w<500?36:52,right=w-left,scoreX=z=>left+(z+extent)/(2*extent)*(right-left);
+  line(ctx,[22,topHeight+5],[w-22,topHeight+5],'#dfe6ee');text(ctx,'투영 좌표 zᵢ = xᵢᵀv',24,topHeight+31,'#354b67','left',13);
+  line(ctx,[left,y0],[right,y0],'#becadb');for(let t=-Math.floor(extent/interval)*interval;t<=extent;t+=interval){const x=scoreX(t);line(ctx,[x,y0-4],[x,y0+5],'#aebbd0');text(ctx,t,x,y0+23,'#7c8ca2','center',11);}
+  result.scores.forEach((z,i)=>circle(ctx,scoreX(z),y0+((i%5)-2)*4,3,projected));
+  text(ctx,'세로 위치는 점의 겹침을 줄이기 위해 분산 배치',24,h-12,'#8a99ad','left',w<500?10:11);
+  drawCurve();
+ }
+ function drawCurve(){if(cw<1||ch<1)return;cc.clearRect(0,0,cw,ch);const l=30,r=cw-12,t=18,b=ch-31,xx=a=>l+(r-l)*a/180,yy=value=>b-(b-t)*value/10;
+  for(const value of [0,5,10]){line(cc,[l,yy(value)],[r,yy(value)],'#e7edf5');text(cc,value,l-7,yy(value)+4,'#8a99ad','right',10);}
+  for(const a of [0,90,180])text(cc,a+'°',xx(a),b+20,'#8a99ad','center',10);
+  cc.beginPath();for(let a=0;a<=180;a++){const y=calc(a).variance;a===0?cc.moveTo(xx(a),yy(y)):cc.lineTo(xx(a),yy(y));}cc.strokeStyle=original;cc.lineWidth=2;cc.stroke();
+  circle(cc,xx(35),yy(9),3,bestColor);text(cc,'최대 9',xx(35)+6,yy(9)-8,bestColor,'left',10);
+  line(cc,[xx(angle),b],[xx(angle),yy(result.variance)],'rgba(214,123,41,.4)',1,[3,3]);circle(cc,xx(angle),yy(result.variance),4.5,projected);
+ }
+ function schedule(){if(!pending)pending=requestAnimationFrame(draw);}
+ function setAngle(value){angle=Math.max(0,Math.min(180,Math.round(value*10)/10));result=calc(angle);$('angle2d').value=angle;$('angle2dValue').value=angle.toFixed(1)+'°';$('variance2d').textContent=result.variance.toFixed(2);$('retained2d').innerHTML=(result.variance/10*100).toFixed(1)+'%<small>전체 분산 10</small>';const delta=((35-angle+90)%180+180)%180-90;$('turn2d').textContent=Math.abs(delta)<.06?'현재 방향에서 분산이 최대입니다.':'가장 가까운 최대 방향까지 '+(delta>0?'반시계':'시계')+' 방향 '+Math.abs(delta).toFixed(1)+'°';schedule();}
+ function resize(){const r=$('wrap2d').getBoundingClientRect(),cr=curve.parentElement.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);w=r.width;h=r.height;cw=cr.width;ch=cr.height;canvas.width=Math.round(w*d);canvas.height=Math.round(h*d);curve.width=Math.round(cw*d);curve.height=Math.round(ch*d);ctx.setTransform(d,0,0,d,0,0);cc.setTransform(d,0,0,d,0,0);schedule();}
+ new ResizeObserver(resize).observe($('wrap2d'));new ResizeObserver(resize).observe(curve.parentElement);
+ $('angle2d').addEventListener('input',e=>setAngle(Number(e.target.value)));$('best2d').addEventListener('click',()=>setAngle(35));$('reset2d').addEventListener('click',()=>setAngle(0));$('lines2d').addEventListener('change',schedule);$('optimum2d').addEventListener('change',schedule);
+ function pointAngle(e){if(!frame)return;const r=canvas.getBoundingClientRect(),x=e.clientX-r.left-frame.cx,y=frame.cy-(e.clientY-r.top);if(Math.hypot(x,y)<15)return;let a=Math.atan2(y,x)*180/Math.PI;a=(a+180)%180;setAngle(a);}
+ canvas.addEventListener('pointerdown',e=>{const r=canvas.getBoundingClientRect();if(e.clientY-r.top>h-145)return;drag=true;canvas.setPointerCapture(e.pointerId);pointAngle(e);});canvas.addEventListener('pointermove',e=>{if(drag)pointAngle(e);});canvas.addEventListener('pointerup',()=>drag=false);canvas.addEventListener('pointercancel',()=>drag=false);
+ canvas.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowUp','ArrowRight','ArrowDown'].includes(e.key)){e.preventDefault();setAngle((angle+(['ArrowLeft','ArrowUp'].includes(e.key)?1:-1)+180)%180);}});
+ const tabIds=['2d','proj3d','3d'];
+ function selectTab(id,focus=false){for(const key of tabIds){const on=key===id;$('demo'+key).hidden=!on;$('tab'+key).setAttribute('aria-selected',String(on));$('tab'+key).tabIndex=on?0:-1;}if(focus)$('tab'+id).focus();}
+ for(const id of tabIds){$('tab'+id).addEventListener('click',()=>selectTab(id));$('tab'+id).addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();selectTab(e.key==='Home'?tabIds[0]:e.key==='End'?tabIds.at(-1):tabIds[(tabIds.indexOf(id)+(e.key==='ArrowRight'?1:tabIds.length-1))%tabIds.length],true);}});}
+ window.pca2d={data:X,covariance:S,getState:()=>({angle,variance:result.variance,vector:result.v.slice(),scores:result.scores.slice(),projections:result.points.map(p=>p.slice()),frame:{...frame}})};
+ setAngle(0);resize();
+})();
+</script>
+<script>
+(() => {
+ 'use strict';
+ const $=id=>document.getElementById(id),source=window.pcaDemo,X=source.data,U=source.eigenvectors,lambda=source.eigenvalues,N=X.length;
+ const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0),mul=(a,c)=>a.map(x=>x*c),sub=(a,b)=>a.map((x,i)=>x-b[i]),norm=a=>Math.hypot(...a),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+ const canvas=$('plotP3'),ctx=canvas.getContext('2d'),extent=Math.ceil(Math.max(...X.map(norm))*1.1),total=lambda.reduce((a,b)=>a+b,0);
+ let az=0,el=0,yaw=-.65,pitch=.65,zoom=1,w=0,h=0,mode='vector',raf=0,drag=null;
+ let v=[1,0,0],scores=[],points=[],variance=0;
+ function schedule(){if(!raf)raf=requestAnimationFrame(draw);}
+ function update(a,b){az=((a%360)+360)%360;el=Math.max(-90,Math.min(90,b));const alpha=az*Math.PI/180,beta=el*Math.PI/180;v=[Math.cos(beta)*Math.cos(alpha),Math.cos(beta)*Math.sin(alpha),Math.sin(beta)];scores=X.map(x=>dot(x,v));points=scores.map(z=>mul(v,z));variance=dot(scores,scores)/(N-1);$('azP3').value=az;$('elP3').value=el;$('azP3Value').value=az.toFixed(1)+'°';$('elP3Value').value=el.toFixed(1)+'°';$('varianceP3').textContent=variance.toFixed(2);$('retainedP3').innerHTML=(100*variance/total).toFixed(1)+'%<small>전체 분산 '+total.toFixed(2)+'</small>';$('vectorP3').textContent='v = ('+v.map(x=>(Math.abs(x)<.0005?0:x).toFixed(3)).join(', ')+')ᵀ';const gap=Math.acos(Math.min(1,Math.abs(dot(v,U[0]))))*180/Math.PI;$('turnP3').textContent=gap<.001?'현재 방향에서 분산이 최대입니다.':'최대 분산 축과의 각도 차이 '+gap.toFixed(1)+'°';schedule();}
+ function projection(){const d=[Math.cos(pitch)*Math.cos(yaw),Math.cos(pitch)*Math.sin(yaw),Math.sin(pitch)],right=[-Math.sin(yaw),Math.cos(yaw),0],up=cross(d,right),plotH=h-145,scale=Math.min(w-70,plotH-55)/(2*extent)*zoom;return p=>({x:w/2+dot(p,right)*scale,y:plotH/2+5-dot(p,up)*scale,z:dot(p,d)});}
+ function line(a,b,color,width=1,dash=[]){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.setLineDash(dash);ctx.stroke();ctx.setLineDash([]);}
+ function text(s,x,y,color='#62738a',align='left',size=12){ctx.font=size+'px "Noto Sans KR","Malgun Gothic",sans-serif';ctx.textAlign=align;ctx.lineWidth=4;ctx.strokeStyle='rgba(248,250,253,.96)';ctx.strokeText(s,x,y);ctx.fillStyle=color;ctx.fillText(s,x,y);}
+ function circle(p,r,color){ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
+ function draw(){raf=0;if(w<1||h<1)return;ctx.clearRect(0,0,w,h);const P=projection(),plotH=h-145;ctx.save();ctx.beginPath();ctx.rect(0,0,w,plotH);ctx.clip();
+  for(let i=0;i<3;i++){const a=[0,0,0],b=[0,0,0];a[i]=-extent*.8;b[i]=extent*.8;line(P(a),P(b),'#d5deeb',1);const p=P(b);text('x'+['₁','₂','₃'][i],p.x+6,p.y-6,'#8b9cb2');}
+  if($('pcP3').checked){line(P(mul(U[0],-extent)),P(mul(U[0],extent)),'#119383',2,[7,5]);const p=P(mul(U[0],extent*.85));text('PC1 · 최대 분산 6',Math.max(12,Math.min(w-140,p.x+8)),p.y-15,'#119383');}
+  line(P(mul(v,-extent)),P(mul(v,extent)),'#d67b29',1.8);
+  if($('linesP3').checked)X.forEach((x,i)=>line(P(x),P(points[i]),'rgba(214,123,41,.13)',1));
+  const all=X.map((x,i)=>({...P(x),i,k:0})).concat(points.map((x,i)=>({...P(x),i,k:1}))).sort((a,b)=>a.z-b.z);all.forEach(p=>circle(p,p.k?3:2.6,p.k?'rgba(214,123,41,.86)':'rgba(82,102,212,.44)'));
+  const o=P([0,0,0]),end=P(v),dx=end.x-o.x,dy=end.y-o.y,l=Math.hypot(dx,dy);line(o,end,'#a65316',4);if(l>4){const ux=dx/l,uy=dy/l;ctx.beginPath();ctx.moveTo(end.x,end.y);ctx.lineTo(end.x-9*ux+4*uy,end.y-9*uy-4*ux);ctx.lineTo(end.x-9*ux-4*uy,end.y-9*uy+4*ux);ctx.closePath();ctx.fillStyle='#a65316';ctx.fill();}circle(o,3,'#233954');text('v',end.x+8,end.y-9,'#a65316','left',16);const label=P(mul(v,extent*.9));text('투영축 v',Math.max(15,Math.min(w-75,label.x+9)),Math.max(22,Math.min(plotH-18,label.y+($('pcP3').checked?19:-12))),'#d67b29');
+  ctx.restore();
+  const left=w<500?35:50,right=w-left,y0=plotH+78,sx=z=>left+(z+extent)/(2*extent)*(right-left),step=extent>10?5:2;
+  line({x:20,y:plotH+5},{x:w-20,y:plotH+5},'#dfe6ee');text('투영 좌표 zᵢ = xᵢᵀv',24,plotH+32,'#354b67','left',13);line({x:left,y:y0},{x:right,y:y0},'#becadb');
+  for(let t=-Math.floor(extent/step)*step;t<=extent;t+=step){line({x:sx(t),y:y0-4},{x:sx(t),y:y0+5},'#aebbd0');text(t,sx(t),y0+25,'#8a99ad','center',11);}scores.forEach((z,i)=>circle({x:sx(z),y:y0+((i%7)-3)*3},2.7,'#d67b29'));
+  text('휠: 확대 · 겹친 점은 세로로 나누어 표시',24,h-10,'#8a99ad','left',w<500?10:11);
+ }
+ function resize(){const r=$('wrapP3').getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);w=r.width;h=r.height;canvas.width=Math.round(w*d);canvas.height=Math.round(h*d);ctx.setTransform(d,0,0,d,0,0);schedule();}
+ new ResizeObserver(resize).observe($('wrapP3'));
+ $('azP3').addEventListener('input',e=>update(Number(e.target.value),el));$('elP3').addEventListener('input',e=>update(az,Number(e.target.value)));
+ $('bestP3').addEventListener('click',()=>update(Math.atan2(U[0][1],U[0][0])*180/Math.PI,Math.asin(U[0][2])*180/Math.PI));$('axisP3').addEventListener('click',()=>update(0,0));
+ ['linesP3','pcP3'].forEach(id=>$(id).addEventListener('change',schedule));
+ function setMode(m){mode=m;$('dragVectorP3').setAttribute('aria-pressed',String(m==='vector'));$('dragViewP3').setAttribute('aria-pressed',String(m==='view'));}
+ $('dragVectorP3').addEventListener('click',()=>setMode('vector'));$('dragViewP3').addEventListener('click',()=>setMode('view'));$('resetViewP3').addEventListener('click',()=>{yaw=-.65;pitch=.65;zoom=1;schedule();});
+ canvas.addEventListener('pointerdown',e=>{if(e.clientY-canvas.getBoundingClientRect().top>h-145)return;if(drag)return;drag={id:e.pointerId,x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId);canvas.classList.add('dragging');});
+ canvas.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag.x=e.clientX;drag.y=e.clientY;if(mode==='vector')update(az+dx*.5,el-dy*.4);else{yaw-=dx*.007;pitch=Math.max(-1.48,Math.min(1.48,pitch+dy*.007));schedule();}});
+ function endDrag(e){if(drag?.id===e.pointerId){drag=null;canvas.classList.remove('dragging');}}
+ canvas.addEventListener('pointerup',endDrag);canvas.addEventListener('pointercancel',endDrag);
+ canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.55,Math.min(2.8,zoom*Math.exp(-e.deltaY*.001)));schedule();},{passive:false});
+ canvas.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();const x=e.key==='ArrowLeft'?-2:e.key==='ArrowRight'?2:0,y=e.key==='ArrowUp'?2:e.key==='ArrowDown'?-2:0;if(mode==='vector')update(az+x,el+y);else{yaw+=x*Math.PI/180;pitch=Math.max(-1.48,Math.min(1.48,pitch+y*Math.PI/180));schedule();}});
+ window.pcaProjection3d={getState:()=>({azimuth:az,elevation:el,vector:v.slice(),scores:scores.slice(),projections:points.map(p=>p.slice()),variance,total,mode,yaw,pitch,zoom})};
+ update(0,0);resize();
+})();
+</script>
+</body>
+</html>
