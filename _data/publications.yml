@@ -1,4 +1,15 @@
 - type: international_journal
+  title: 'No Crop, No Recompute: Region-Aware Satellite Image Sequence Embeddings for Scalable Weather Retrieval'
+  venue:
+    text: IEEE Access (accepted)
+    link: https://ieeeaccess.ieee.org/
+  year: 2026
+  authors:
+  - Ki-Yeon Park
+  - Ha-Myung Park
+  links:
+    paper: https://doi.org/10.1109/ACCESS.2026.3755103
+- type: international_journal
   title: Efficient Reconstruction of Masked Image Embeddings for Region-Specific Satellite Image Retrieval
   venue:
     text: IEEE Access
